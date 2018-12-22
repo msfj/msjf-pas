@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.msjf.finance.cas.modules.organ.dao.OrganInfoDao">
+
+    <resultMap id="BaseResultMap" type="com.msjf.finance.cas.modules.organ.entity.OrganInfoEntity" >
+        <result column="customerno" property="customerno" jdbcType="VARCHAR" />
+        <result column="membername" property="membername" jdbcType="VARCHAR" />
+        <result column="organtype" property="organtype" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >customerno,membername,organtype</sql>
+    <select id="queryOrganInfoList"  resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM cif_organ_info limit 1
+    </select>
+</mapper>
