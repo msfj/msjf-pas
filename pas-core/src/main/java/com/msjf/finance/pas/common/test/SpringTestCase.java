@@ -1,4 +1,4 @@
-package com.msjf.finance.cas.common.test;
+package com.msjf.finance.pas.common.test;
 @org.junit.runner.RunWith(org.springframework.test.context.junit4.SpringJUnit4ClassRunner.class)
 @org.springframework.test.context.ContextConfiguration(locations = {"classpath:/applicationContext.xml"})
 public abstract class SpringTestCase extends org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests {

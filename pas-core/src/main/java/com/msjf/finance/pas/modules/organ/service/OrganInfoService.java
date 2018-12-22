@@ -1,4 +1,4 @@
-package com.msjf.finance.cas.modules.organ.service;
+package com.msjf.finance.pas.modules.organ.service;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 
 package organ;
 
-import com.msjf.finance.cas.common.test.SpringTestCase;
+import com.msjf.finance.pas.common.test.SpringTestCase;
 
 import com.msjf.finance.pas.facade.organ.OrganInfoFacade;
 import org.junit.Test;

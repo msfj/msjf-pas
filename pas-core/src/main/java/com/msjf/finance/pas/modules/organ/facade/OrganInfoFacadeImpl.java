@@ -1,9 +1,9 @@
-package com.msjf.finance.cas.modules.organ.facade;
+package com.msjf.finance.pas.modules.organ.facade;
 
 import com.msjf.finance.pas.common.response.Response;
 import com.msjf.finance.pas.facade.organ.OrganInfoFacade;
 import com.msjf.finance.pas.facade.organ.domain.OrganInfoDomain;
-import com.msjf.finance.cas.modules.organ.service.OrganInfoService;
+import com.msjf.finance.pas.modules.organ.service.OrganInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

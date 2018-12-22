@@ -1,4 +1,4 @@
-package com.msjf.finance.cas.common.dao;
+package com.msjf.finance.pas.common.dao;
 
 @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @java.lang.annotation.Target({java.lang.annotation.ElementType.TYPE})

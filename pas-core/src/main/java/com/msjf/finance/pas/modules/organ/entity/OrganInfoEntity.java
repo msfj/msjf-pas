@@ -1,4 +1,4 @@
-package com.msjf.finance.cas.modules.organ.entity;
+package com.msjf.finance.pas.modules.organ.entity;
 import com.msjf.finance.pas.common.response.BaseEntity;
 
 /**
