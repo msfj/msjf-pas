@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/pas.iml" filepath="$PROJECT_DIR$/pas.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pas-api/cas-api.iml" filepath="$PROJECT_DIR$/pas-api/cas-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pas-api/pas-api.iml" filepath="$PROJECT_DIR$/pas-api/pas-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/pas-core/pas-core.iml" filepath="$PROJECT_DIR$/pas-core/pas-core.iml" />
     </modules>
   </component>

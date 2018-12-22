@@ -1,16 +1,16 @@
-/*
+
 package organ;
 
 import com.msjf.finance.cas.common.test.SpringTestCase;
-import com.msjf.finance.cas.facade.organ.OrganInfoFacade;
+
+import com.msjf.finance.pas.facade.organ.OrganInfoFacade;
 import org.junit.Test;
 
 import javax.annotation.Resource;
 
-*/
 /**
  * Created by 11509 on 2018/12/18.
- *//*
+ */
 
 public class OrganInfoFacadeTest   extends SpringTestCase{
     @Resource
@@ -24,4 +24,4 @@ public class OrganInfoFacadeTest   extends SpringTestCase{
         }
     }
 }
-*/
+

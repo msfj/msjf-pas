@@ -1,0 +1,8 @@
+com\msjf\finance\cas\common\response\BaseEntity.class
+com\msjf\finance\cas\common\response\ResponseService.class
+com\msjf\finance\cas\common\response\Response.class
+com\msjf\finance\cas\common\response\RespFlagEnum.class
+com\msjf\finance\cas\common\response\DefaultCodeMsgResponse.class
+com\msjf\finance\cas\facade\organ\OrganInfoFacade.class
+com\msjf\finance\cas\facade\organ\domain\OrganInfoDomain.class
+com\msjf\finance\cas\common\response\BaseDomain.class

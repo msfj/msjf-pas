@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- ��������Դ -->
+    <bean name="dataSource"
+          class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc_driverClassName}" />
+        <property name="url" value="${jdbc_url}" />
+        <property name="username" value="${jdbc_username}" />
+        <property name="password" value="${jdbc_password}" />
+        <!-- ��ʼ�����Ӵ�С -->
+        <property name="initialSize" value="100" />
+        <!-- ���ӳ����ʹ���������� -->
+        <property name="maxActive" value="500" />
+        <!-- ���ӳ���С���� -->
+        <property name="minIdle" value="1" />
+        <!-- ��ȡ�������ȴ�ʱ�� -->
+        <property name="maxWait" value="60000" />
+        <property name="validationQuery" value="${validationQuery}" />
+        <property name="testOnBorrow" value="true" />
+        <property name="testOnReturn" value="true" />
+        <property name="testWhileIdle" value="true" />
+        <!-- ���ü����òŽ���һ�μ�⣬�����Ҫ�رյĿ������ӣ���λ�Ǻ��� -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <!-- ����һ�������ڳ�����С�����ʱ�䣬��λ�Ǻ��� -->
+        <property name="minEvictableIdleTimeMillis" value="25200000" />
+        <!-- ��removeAbandoned���� -->
+        <property name="removeAbandoned" value="true" />
+        <!-- 1800�룬Ҳ����30���� -->
+        <property name="removeAbandonedTimeout" value="1800" />
+        <!-- �ر�abanded����ʱ���������־ -->
+        <property name="logAbandoned" value="true" />
+        <!-- ������ݿ� -->
+        <!-- <property name="filters" value="stat" /> -->
+        <property name="filters" value="mergeStat" />
+    </bean>
+
+    <!-- myBatis�Ĺ����� -->
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- �������ݿ���Ӧ��javaʵ���� -->
+        <property name="typeAliasesPackage" value="com.msjf.finance.cas" />
+        <!-- �Զ�ɨ��entityĿ¼, ʡ��Configuration.xml����ֹ����� -->
+        <property name="mapperLocations"
+                  value="classpath*:mybaties/mappings/**/*Mapper.xml" />
+        <property name="configLocation"
+                  value="classpath:mybaties/mybatis-config.xml" />
+    </bean>
+
+    <!-- ɨ��basePackage��������@MyBatisDaoע��Ľӿ� -->
+   <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.msjf.finance.cas"/>
+        <property name="annotationClass" value="com.msjf.finance.cas.common.dao.MyBatisDao"/>
+        <property name="markerInterface" value="tk.mybatis.mapper.common.Mapper"/>
+        <property name="properties">
+            <value>
+                mappers=tk.mybatis.mapper.common.Mapper,tk.mybatis.mapper.common.IdsMapper
+            </value>
+        </property>
+ </bean>
+
+    <!-- �������������� -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+
+    <!-- SqlSessionTemplate -->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory" />
+    </bean>
+
+    <!-- ע������ -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

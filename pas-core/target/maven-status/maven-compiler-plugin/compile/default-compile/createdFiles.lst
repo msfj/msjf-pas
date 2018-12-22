@@ -1,0 +1,7 @@
+com\msjf\finance\cas\common\test\SpringTestCase.class
+com\msjf\finance\cas\common\dao\MyBatisDao.class
+com\msjf\finance\cas\modules\organ\dao\OrganInfoDao.class
+com\msjf\finance\cas\modules\organ\service\OrganInfoService.class
+com\msjf\finance\cas\modules\organ\entity\OrganInfoEntity.class
+com\msjf\finance\cas\modules\organ\service\impl\OrganInfoServiceImpl.class
+com\msjf\finance\cas\modules\organ\facade\OrganInfoFacadeImpl.class
