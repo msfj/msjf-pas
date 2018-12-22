@@ -1,8 +1,10 @@
+com\msjf\finance\pas\facade\organ\domain\CustInfoDomain.class
 com\msjf\finance\pas\common\response\DefaultCodeMsgResponse.class
 com\msjf\finance\pas\common\response\RespFlagEnum.class
 com\msjf\finance\pas\common\response\BaseEntity.class
 com\msjf\finance\pas\common\response\BaseDomain.class
 com\msjf\finance\pas\common\response\ResponseService.class
+com\msjf\finance\pas\facade\organ\CustInfoFacade.class
 com\msjf\finance\pas\common\response\Response.class
 com\msjf\finance\pas\facade\organ\domain\OrganInfoDomain.class
 com\msjf\finance\pas\facade\organ\OrganInfoFacade.class

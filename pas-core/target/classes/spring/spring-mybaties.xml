@@ -51,7 +51,7 @@
           class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- �������ݿ���Ӧ��javaʵ���� -->
-        <property name="typeAliasesPackage" value="com.msjf.finance.cas" />
+        <property name="typeAliasesPackage" value="com.msjf.finance.pas" />
         <!-- �Զ�ɨ��entityĿ¼, ʡ��Configuration.xml����ֹ����� -->
         <property name="mapperLocations"
                   value="classpath*:mybaties/mappings/**/*Mapper.xml" />
@@ -62,7 +62,7 @@
     <!-- ɨ��basePackage��������@MyBatisDaoע��Ľӿ� -->
    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.msjf.finance.cas"/>
+        <property name="basePackage" value="com.msjf.finance.pas"/>
         <property name="annotationClass" value="com.msjf.finance.pas.common.dao.MyBatisDao"/>
         <property name="markerInterface" value="tk.mybatis.mapper.common.Mapper"/>
         <property name="properties">

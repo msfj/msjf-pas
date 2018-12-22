@@ -2,45 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa954635-df57-406a-95b7-4c851b749e78" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_msjf_finance_mcs_api_1_0_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/facade/organ/CustInfoFacade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/facade/organ/domain/CustInfoDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/dao/CustInfoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/entity/CustEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/CustInfoFacadeImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/CustInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/impl/CustInfoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/CustInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-api/target/classes/com/msjf/finance/cas/common/response/BaseDomain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-api/target/classes/com/msjf/finance/cas/common/response/BaseEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-api/target/classes/com/msjf/finance/cas/common/response/DefaultCodeMsgResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-api/target/classes/com/msjf/finance/cas/common/response/RespFlagEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-api/target/classes/com/msjf/finance/cas/common/response/Response.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-api/target/classes/com/msjf/finance/cas/common/response/ResponseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-api/target/classes/com/msjf/finance/cas/facade/organ/OrganInfoFacade.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-api/target/classes/com/msjf/finance/cas/facade/organ/domain/OrganInfoDomain.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-api/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pas-api/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pas-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pas-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-api/target/pas-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/pas-api/target/pas-api-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/common/dao/MyBatisDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/common/dao/MyBatisDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/common/test/SpringTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/common/test/SpringTestCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/dao/OrganInfoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/dao/OrganInfoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/entity/OrganInfoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/entity/OrganInfoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/OrganInfoFacadeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/OrganInfoFacadeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/OrganInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/OrganInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/impl/OrganInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/impl/OrganInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/catalina.base_IS_UNDEFINED/logs/common-default.log" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/catalina.base_IS_UNDEFINED/logs/common-default.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/pas-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/pas-core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/consumer-services/dubbo-consumer-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/consumer-services/dubbo-consumer-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/provider-services/dubbo-provider-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/provider-services/dubbo-provider-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/OrganInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/OrganInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/src/main/resources/properties/dubbo.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/resources/properties/dubbo.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-core/src/main/resources/spring/spring-mybaties.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/main/resources/spring/spring-mybaties.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-core/src/test/java/organ/OrganInfoFacadeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/src/test/java/organ/OrganInfoFacadeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/META-INF/spring/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/classes/META-INF/spring/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/classes/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/com/msjf/finance/cas/common/dao/MyBatisDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/com/msjf/finance/cas/common/test/SpringTestCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/com/msjf/finance/cas/modules/organ/dao/OrganInfoDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/com/msjf/finance/cas/modules/organ/entity/OrganInfoEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/com/msjf/finance/cas/modules/organ/facade/OrganInfoFacadeImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/com/msjf/finance/cas/modules/organ/service/OrganInfoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/com/msjf/finance/cas/modules/organ/service/impl/OrganInfoServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/dubbo-services/consumer-services/dubbo-consumer-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/classes/dubbo-services/consumer-services/dubbo-consumer-service.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-core/target/classes/dubbo-services/provider-services/dubbo-provider-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/classes/dubbo-services/provider-services/dubbo-provider-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/mybaties/mappings/organInfo/OrganInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/classes/mybaties/mappings/organInfo/OrganInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/target/classes/properties/dubbo.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/classes/properties/dubbo.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-core/target/classes/spring/spring-mybaties.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/classes/spring/spring-mybaties.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/surefire/surefire1330347034017170001tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/surefire/surefire_07949664158877987387tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pas-core/target/surefire/surefirebooter2517910214525505318.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/target/surefire-reports/TEST-organ.OrganInfoFacadeTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/surefire-reports/TEST-organ.OrganInfoFacadeTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pas-core/target/surefire-reports/organ.OrganInfoFacadeTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/surefire-reports/organ.OrganInfoFacadeTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pas-core/target/test-classes/organ/OrganInfoFacadeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/pas-core/target/test-classes/organ/OrganInfoFacadeTest.class" afterDir="false" />
     </list>
     <ignored path="cas.iws" />
@@ -67,34 +60,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/applicationContext.xml">
+      <file leaf-file-name="OrganInfoFacadeImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/OrganInfoFacadeImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+            <state relative-caret-position="76">
+              <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spring-mybaties.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/spring/spring-mybaties.xml">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pas-core/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="71" column="19" lean-forward="true" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+            <state relative-caret-position="226">
+              <caret line="218" column="21" selection-start-line="218" selection-start-column="21" selection-end-line="218" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dubbo.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/properties/dubbo.properties">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="OrganInfoFacadeTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pas-core/src/test/java/organ/OrganInfoFacadeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="jdbc.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/properties/jdbc.properties">
+      <file leaf-file-name="dubbo-provider-service.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/provider-services/dubbo-provider-service.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+            <state relative-caret-position="171">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dubbo-consumer-service.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/consumer-services/dubbo-consumer-service.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="9" column="103" selection-start-line="9" selection-start-column="84" selection-end-line="9" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -105,16 +117,22 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
-        <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cas</find>
       <find>com.msjf.finance.pas.facade.organ.OrganInfoFacade</find>
       <find>OrganInfoFacade</find>
+      <find>OrganInfoDao</find>
+      <find>cas</find>
+      <find>organInfoService</find>
+      <find>organInfoFacade</find>
+      <find>custInfoFacade</find>
+      <find>pas</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -126,20 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/organ/service/OrganInfoService.java" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/resources/spring/Logback.xml" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/resources/env/dev.properties" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/organ/dao/OrganInfoDao.java" />
-        <option value="$PROJECT_DIR$/cas-core/catalina.base_IS_UNDEFINED/logs/common-default.log" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/common/test/SpringTestCase.java" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/organ/service/impl/OrganInfoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/common/response/Response.java" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/common/response/RespFlagEnum.java" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/common/response/ResponseService.java" />
-        <option value="$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/common/response/DefaultCodeMsgResponse.java" />
-        <option value="$PROJECT_DIR$/cas-api/src/main/java/com/msjf/finance/cas/facade/organ/com/msjf/finance/cas/common/response/DefaultCodeMsgResponse.java" />
-        <option value="$PROJECT_DIR$/cas-api/src/main/java/com/msjf/finance/cas/response/DefaultCodeMsgResponse.java" />
-        <option value="$PROJECT_DIR$/cas-api/src/main/java/com/msjf/finance/cas/response/RespFlagEnum.java" />
         <option value="$PROJECT_DIR$/cas-api/src/main/java/com/msjf/finance/cas/response/Response.java" />
         <option value="$PROJECT_DIR$/cas-api/src/main/java/com/msjf/finance/cas/response/ResponseService.java" />
         <option value="$PROJECT_DIR$/cas-api/src/main/java/com/msjf/finance/cas/facade/organ/OrganInfoFacade.java" />
@@ -164,7 +168,6 @@
         <option value="$PROJECT_DIR$/cas-api/pom.xml" />
         <option value="$PROJECT_DIR$/cas-core/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/pas-core/pom.xml" />
         <option value="$PROJECT_DIR$/pas-api/pom.xml" />
         <option value="$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/common/response/BaseDomain.java" />
         <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/entity/OrganInfoEntity.java" />
@@ -173,9 +176,24 @@
         <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/common/dao/MyBatisDao.java" />
         <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/common/test/SpringTestCase.java" />
         <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/dao/OrganInfoDao.java" />
-        <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/OrganInfoFacadeImpl.java" />
         <option value="$PROJECT_DIR$/pas-core/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/pas-core/src/main/resources/spring/spring-mybaties.xml" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/OrganInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/resources/properties/dubbo.properties" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/entity/CustEntity.java" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/CustInfoMapper.fxml" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/dao/CustInfoDao.java" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/CustInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/CustInfoService.java" />
+        <option value="$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/facade/organ/domain/CustInfoDomain.java" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/impl/CustInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/facade/organ/CustInfoFacade.java" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/CustInfoFacade.java" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/OrganInfoFacadeImpl.java" />
+        <option value="$PROJECT_DIR$/pas-core/pom.xml" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/CustInfoFacadeImpl.java" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/provider-services/dubbo-provider-service.xml" />
+        <option value="$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/consumer-services/dubbo-consumer-service.xml" />
         <option value="$PROJECT_DIR$/pas-core/src/test/java/organ/OrganInfoFacadeTest.java" />
       </list>
     </option>
@@ -210,10 +228,6 @@
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="pas-api" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="pas" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
@@ -228,7 +242,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1940" />
@@ -290,6 +304,27 @@
               <item name="pas-core" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pas" type="462c0819:PsiDirectoryNode" />
+              <item name="organ" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="msjf-pas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msjf-pas" type="462c0819:PsiDirectoryNode" />
+              <item name="pas-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pas" type="462c0819:PsiDirectoryNode" />
+              <item name="organ" type="462c0819:PsiDirectoryNode" />
+              <item name="facade" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="msjf-pas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msjf-pas" type="462c0819:PsiDirectoryNode" />
+              <item name="pas-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -299,7 +334,51 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="msjf-pas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msjf-pas" type="462c0819:PsiDirectoryNode" />
+              <item name="pas-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-services" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer-services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="msjf-pas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msjf-pas" type="462c0819:PsiDirectoryNode" />
+              <item name="pas-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-services" type="462c0819:PsiDirectoryNode" />
+              <item name="provider-services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="msjf-pas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msjf-pas" type="462c0819:PsiDirectoryNode" />
+              <item name="pas-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="msjf-pas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msjf-pas" type="462c0819:PsiDirectoryNode" />
+              <item name="pas-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="msjf-pas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="msjf-pas" type="462c0819:PsiDirectoryNode" />
+              <item name="pas-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="organ" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -348,7 +427,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OrganInfoFacadeTest.queryOrganInfoList">
+  <component name="RunManager" selected="JUnit.OrganInfoFacadeTest.queryCustInfoList">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -426,6 +505,29 @@
       <option name="MAIN_CLASS_NAME" value="organ.OrganInfoFacadeTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="OrganInfoFacadeTest.queryCustInfoList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pas-core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="organ.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="organ" />
+      <option name="MAIN_CLASS_NAME" value="organ.OrganInfoFacadeTest" />
+      <option name="METHOD_NAME" value="queryCustInfoList" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -603,9 +705,11 @@
     <list>
       <item itemvalue="JUnit.OrganInfoFacadeTest.queryOrganInfoList" />
       <item itemvalue="JUnit.OrganInfoFacadeTest" />
+      <item itemvalue="JUnit.OrganInfoFacadeTest.queryCustInfoList" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrganInfoFacadeTest.queryCustInfoList" />
         <item itemvalue="JUnit.OrganInfoFacadeTest.queryOrganInfoList" />
         <item itemvalue="JUnit.OrganInfoFacadeTest" />
       </list>
@@ -630,7 +734,7 @@
       <workItem from="1545318943927" duration="5035000" />
       <workItem from="1545327723220" duration="849000" />
       <workItem from="1545457365471" duration="2719000" />
-      <workItem from="1545461486299" duration="1459000" />
+      <workItem from="1545461486299" duration="10901000" />
     </task>
     <task id="LOCAL-00001" summary="提交版本">
       <created>1545321018937</created>
@@ -664,102 +768,74 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OrganInfoFacadeTest - 2018.12.20 at 00h 05m 30s.xml">
+    <history-entry file="OrganInfoFacadeTest_queryCustInfoList - 2018.12.22 at 16h 20m 48s.xml">
+      <configuration name="OrganInfoFacadeTest.queryCustInfoList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrganInfoFacadeTest - 2018.12.22 at 16h 47m 30s.xml">
       <configuration name="OrganInfoFacadeTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OrganInfoFacadeTest - 2018.12.20 at 00h 07m 55s.xml">
+    <history-entry file="OrganInfoFacadeTest - 2018.12.22 at 16h 48m 45s.xml">
       <configuration name="OrganInfoFacadeTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OrganInfoFacadeTest - 2018.12.20 at 00h 10m 46s.xml">
+    <history-entry file="OrganInfoFacadeTest - 2018.12.22 at 16h 50m 33s.xml">
       <configuration name="OrganInfoFacadeTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OrganInfoFacadeTest - 2018.12.20 at 00h 12m 48s.xml">
+    <history-entry file="OrganInfoFacadeTest - 2018.12.22 at 16h 53m 43s.xml">
       <configuration name="OrganInfoFacadeTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OrganInfoFacadeTest - 2018.12.20 at 00h 14m 51s.xml">
-      <configuration name="OrganInfoFacadeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OrganInfoFacadeTest - 2018.12.20 at 00h 16m 33s.xml">
-      <configuration name="OrganInfoFacadeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OrganInfoFacadeTest - 2018.12.20 at 00h 18m 17s.xml">
-      <configuration name="OrganInfoFacadeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OrganInfoFacadeTest - 2018.12.20 at 00h 21m 00s.xml">
-      <configuration name="OrganInfoFacadeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OrganInfoFacadeTest_queryOrganInfoList - 2018.12.22 at 14h 59m 05s.xml">
+    <history-entry file="OrganInfoFacadeTest_queryOrganInfoList - 2018.12.22 at 17h 04m 09s.xml">
       <configuration name="OrganInfoFacadeTest.queryOrganInfoList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OrganInfoFacadeTest_queryOrganInfoList - 2018.12.22 at 15h 01m 16s.xml">
+    <history-entry file="OrganInfoFacadeTest_queryOrganInfoList - 2018.12.22 at 17h 06m 38s.xml">
       <configuration name="OrganInfoFacadeTest.queryOrganInfoList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrganInfoFacadeTest_queryOrganInfoList - 2018.12.22 at 17h 09m 48s.xml">
+      <configuration name="OrganInfoFacadeTest.queryOrganInfoList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrganInfoFacadeTest_queryCustInfoList - 2018.12.22 at 17h 41m 30s.xml">
+      <configuration name="OrganInfoFacadeTest.queryCustInfoList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrganInfoFacadeTest_queryCustInfoList - 2018.12.22 at 17h 46m 39s.xml">
+      <configuration name="OrganInfoFacadeTest.queryCustInfoList" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32698000" />
+    <option name="totallyTimeSpent" value="42140000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1552" height="840" extended-state="0" />
+    <frame x="-8" y="-8" width="1552" height="840" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.496749" weight="0.329235" />
-      <window_info id="Palette&#9;" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.096879065" side_tool="true" visible="true" weight="0.32786885" />
-      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.1983095" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49349806" weight="0.329235" />
+      <window_info id="Palette&#9;" order="6" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.23081924" side_tool="true" weight="0.57103825" />
+      <window_info anchor="right" id="Maven Projects" order="6" visible="true" weight="0.1983095" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.90312093" visible="true" weight="0.32786885" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4993498" weight="0.44945356" />
-      <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8797139" weight="0.47540984" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.4993498" weight="0.44945356" />
+      <window_info anchor="bottom" id="Spring" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="2" />
-      <window_info anchor="right" id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21911573" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Designer" order="4" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18985696" />
+      <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4993498" weight="0.329235" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7714592" weight="0.42468855" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.7691808" visible="true" weight="0.5327869" />
+      <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49785408" weight="0.3295583" />
-      <window_info anchor="right" id="Designer" order="5" />
-      <window_info anchor="bottom" id="Spring" order="11" />
-      <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7714592" weight="0.4745187" />
-      <window_info id="Palette&#9;" order="4" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.22854078" side_tool="true" weight="0.53114384" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="4" visible="true" weight="0.3299356" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -800,18 +876,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/employee/service/impl/EmployeeServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/organ/service/OrganInfoService.java" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/employee/service/EmployeeService.java" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/employee/dao/EmployeeDao.java" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/resources/env/dev.properties" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/organ/facade/OrganInfoFacadeImpl.java" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/java/com/msjf/finance/cas/modules/organ/service/impl/OrganInfoServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/resources/properties/logback.properties" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/resources/properties/jdbc.properties" />
-    <entry file="file://$PROJECT_DIR$/cas-api/src/main/java/com/msjf/finance/cas/facade/organ/OrganInfoFacade.java" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/resources/Logback.xml" />
-    <entry file="file://$PROJECT_DIR$/cas-core/src/main/resources/spring/spring-mybaties.xml" />
     <entry file="file://$PROJECT_DIR$/cas-core/src/main/resources/spring/dubbo/dubbo-provider.xml" />
     <entry file="file://$PROJECT_DIR$/cas-core/src/main/resources/applicationContext.xml" />
     <entry file="file://$PROJECT_DIR$/cas-core/src/main/resources/spring/dubbo/dubbo-consumer.xml" />
@@ -852,41 +916,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3990">
-          <caret line="210" column="44" selection-start-line="210" selection-start-column="44" selection-end-line="210" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="11" column="19" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/OrganInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/OrganInfoFacadeImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/common/dao/MyBatisDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -897,53 +930,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/dao/OrganInfoDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/entity/OrganInfoEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/properties/dubbo.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/properties/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/impl/OrganInfoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/consumer-services/dubbo-consumer-service.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mybatis-config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-811" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/OrganInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/properties/logback.properties">
       <provider selected="true" editor-type-id="text-editor" />
@@ -951,10 +941,88 @@
     <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/spring/dubbo/dubbo-provider.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/test/java/organ/OrganInfoFacadeTest.java">
+    <entry file="jar://D:/repo/org/springframework/spring-context/4.3.2.RELEASE/spring-context-4.3.2.RELEASE.jar!/org/springframework/context/annotation/CommonAnnotationBeanPostProcessor.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        <state relative-caret-position="335">
+          <caret line="100" column="1" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/common/dao/MyBatisDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/properties/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/spring/spring-mybaties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="58" column="66" lean-forward="true" selection-start-line="58" selection-start-column="66" selection-end-line="58" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/properties/dubbo.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/catalina.base_IS_UNDEFINED/logs/common-default.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="1610" column="1760" selection-start-line="1610" selection-start-column="1760" selection-end-line="1610" selection-end-column="1760" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/entity/OrganInfoEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/OrganInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/CustInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/OrganInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="13" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/mybaties/mappings/organInfo/CustInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/dao/CustInfoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -963,8 +1031,104 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+        <state relative-caret-position="266">
+          <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/entity/CustEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="e#297#298#0" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#459#460#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+            <element signature="e#532#533#0" expanded="true" />
+            <element signature="e#568#569#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/facade/organ/domain/OrganInfoDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/common/response/ResponseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/dao/OrganInfoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/impl/OrganInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="35" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/service/impl/CustInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/facade/organ/domain/CustInfoDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#462#463#0" expanded="true" />
+            <element signature="e#491#492#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#607#608#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-api/src/main/java/com/msjf/finance/pas/facade/organ/CustInfoFacade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -978,17 +1142,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/provider-services/dubbo-provider-service.xml">
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/CustInfoFacadeImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        <state relative-caret-position="19">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/spring/spring-mybaties.xml">
+    <entry file="file://$PROJECT_DIR$/pas-core/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="71" column="19" lean-forward="true" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+        <state relative-caret-position="226">
+          <caret line="218" column="21" selection-start-line="218" selection-start-column="21" selection-end-line="218" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/consumer-services/dubbo-consumer-service.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="9" column="103" selection-start-line="9" selection-start-column="84" selection-end-line="9" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/resources/dubbo-services/provider-services/dubbo-provider-service.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/main/java/com/msjf/finance/pas/modules/organ/facade/OrganInfoFacadeImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pas-core/src/test/java/organ/OrganInfoFacadeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

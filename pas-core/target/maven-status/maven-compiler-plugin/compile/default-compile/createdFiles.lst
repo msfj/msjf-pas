@@ -1,7 +1,12 @@
 com\msjf\finance\pas\modules\organ\service\OrganInfoService.class
 com\msjf\finance\pas\modules\organ\service\impl\OrganInfoServiceImpl.class
 com\msjf\finance\pas\common\test\SpringTestCase.class
+com\msjf\finance\pas\modules\organ\service\CustInfoService.class
+com\msjf\finance\pas\modules\organ\service\impl\CustInfoServiceImpl.class
+com\msjf\finance\pas\modules\organ\facade\CustInfoFacadeImpl.class
 com\msjf\finance\pas\modules\organ\dao\OrganInfoDao.class
 com\msjf\finance\pas\common\dao\MyBatisDao.class
+com\msjf\finance\pas\modules\organ\dao\CustInfoDao.class
 com\msjf\finance\pas\modules\organ\facade\OrganInfoFacadeImpl.class
+com\msjf\finance\pas\modules\organ\entity\CustEntity.class
 com\msjf\finance\pas\modules\organ\entity\OrganInfoEntity.class

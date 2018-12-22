@@ -6,6 +6,7 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 <dubbo:service interface="com.msjf.finance.pas.facade.organ.OrganInfoFacade" ref="organInfoFacade" />
+    <dubbo:service interface="com.msjf.finance.pas.facade.organ.CustInfoFacade" ref="custInfoFacade" />
 
 
 

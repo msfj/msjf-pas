@@ -51,7 +51,7 @@
           class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 配置数据库表对应的java实体类 -->
-        <property name="typeAliasesPackage" value="com.msjf.finance.cas" />
+        <property name="typeAliasesPackage" value="com.msjf.finance.pas" />
         <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
         <property name="mapperLocations"
                   value="classpath*:mybaties/mappings/**/*Mapper.xml" />
@@ -62,7 +62,7 @@
     <!-- 扫描basePackage下所有以@MyBatisDao注解的接口 -->
    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.msjf.finance.cas"/>
+        <property name="basePackage" value="com.msjf.finance.pas"/>
         <property name="annotationClass" value="com.msjf.finance.pas.common.dao.MyBatisDao"/>
         <property name="markerInterface" value="tk.mybatis.mapper.common.Mapper"/>
         <property name="properties">
