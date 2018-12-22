@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.msjf.finance</groupId>
-    <artifactId>cas</artifactId>
+    <artifactId>pas</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>cas-api</module>
-        <module>cas-core</module>
+        <module>pas-api</module>
+        <module>pas-core</module>
     </modules>
     <distributionManagement>
         <repository>
