@@ -29,4 +29,5 @@
 	</context:component-scan>
 	<!-- ������� -->
 	<import resource="classpath*:/spring/**/*.xml"/>
+
 </beans>

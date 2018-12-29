@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.msjf.finance.pas.bpm.dao.mapper.ProStepAuditDao">
+
+    <resultMap id="BaseResultMap" type="com.msjf.finance.pas.bpm.entity.ProStepAuditEntity" >
+        <result column="pro_def_key" property="proDefKey" jdbcType="VARCHAR" />
+        <result column="pro_def_name" property="proDefName" jdbcType="VARCHAR" />
+        <result column="stepid" property="stepId" jdbcType="VARCHAR" />
+        <result column="step_name" property="stepName" jdbcType="VARCHAR" />
+        <result column="auditor_id" property="auditorId" jdbcType="VARCHAR" />
+        <result column="auditor_name" property="auditorName" jdbcType="VARCHAR" />
+        <result column="auditor_type" property="auditorType" jdbcType="VARCHAR" />
+        <result column="area_no" property="areaNo" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >pro_def_key,pro_def_name,stepid,step_name,auditor_id,auditor_name,auditor_type,area_no</sql>
+    <select id="queryAuditorList"  parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM msjfpas.pas_step_audit t
+        <where>
+            <if test=" proDefKey != null  and proDefKey !=''">
+                and t.pro_def_key = #{proDefKey}
+            </if>
+            <if test=" stepId != null  and stepId !=''">
+                and t.stepid = #{stepId}
+            </if>
+            <if test=" areaNo != null  and areaNo !=''">
+                and t.area_no = #{areaNo}
+            </if>
+        </where>
+    </select>
+
+
+    <insert id="addAuditorList" parameterType="java.util.HashMap">
+        <![CDATA[
+			insert into msjfpas.pas_step_audit(pro_def_key,pro_def_name,stepid,step_name,auditor_id,auditor_name,auditor_type,area_no)
+				values
+		 ]]>
+        <foreach item="item" index="index" collection="list"    separator="," >
+            (
+            #{item.proDefKey},
+            #{item.proDefName},
+            #{item.stepId},
+            #{item.stepName},
+            #{item.auditorId},
+            #{item.auditorName},
+            #{item.auditorType},
+            #{item.areaNo}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 删除申请单参数 -->
+    <delete id="delAuditorList" parameterType="java.util.HashMap">
+        <![CDATA[
+				delete from msjfpas.pas_step_audit t where t.pro_def_key = #{proDefKey} and t.stepid = #{stepId} and t.area_no = #{areaNo}
+	   	 	]]>
+    </delete>
+</mapper>
