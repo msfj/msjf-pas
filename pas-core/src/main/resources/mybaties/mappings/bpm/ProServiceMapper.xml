@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.msjf.finance.pas.bpm.dao.mapper.ProServiceDao">
+
+    <resultMap id="BaseResultMap" type="com.msjf.finance.pas.bpm.entity.ProServiceEntity" >
+        <result column="pro_def_key" property="proDefKey" jdbcType="VARCHAR" />
+        <result column="service_name" property="serviceName" jdbcType="VARCHAR" />
+        <result column="service_flag" property="serviceFlag" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >pro_def_key "proDefKey",service_name "serviceName",service_flag "serviceFlag"</sql>
+    <select id="queryProServiceList"  parameterType="java.util.HashMap" resultType="java.util.LinkedHashMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM msjfpas.pas_pro_service t
+        <where>
+            <if test=" serviceFlag != null  and serviceFlag !=''">
+                and t.service_flag = #{serviceFlag}
+            </if>
+        </where>
+    </select>
+
+
+
+    <!-- 修改业务流程信息 -->
+    <update id="updateServicePro" parameterType="java.util.HashMap">
+        <![CDATA[
+				update  msjfpas.pas_pro_service  set pro_def_key = #{proDefKey} where service_flag = #{serviceFlag}
+	   	 	]]>
+    </update>
+</mapper>

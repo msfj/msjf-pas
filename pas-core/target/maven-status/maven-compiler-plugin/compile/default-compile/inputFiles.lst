@@ -4,10 +4,13 @@ D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\entity\DeploymentEnt
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\dao\mapper\DeploymentQueryMapper.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\common\ParametersConstant.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\modules\organ\service\OrganInfoService.java
+D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\dao\mapper\ProServiceDao.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\service\activity\ProcessDefinitionServiceImpl.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\service\activity\ProStepAuditServiceImpl.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\service\activity\ModelServiceImpl.java
+D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\service\ProService.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\modules\organ\entity\CustEntity.java
+D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\service\activity\ProServiceImpl.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\service\activity\PublicTaskServiceImpl.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\service\KbpmTaskService.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\entity\ProStepAuditEntity.java
@@ -29,3 +32,4 @@ D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\dao\mapper\ProStepAu
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\common\StringUtil.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\service\PublicTaskService.java
 D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\modules\organ\service\impl\OrganInfoServiceImpl.java
+D:\msjf-pas\pas-core\src\main\java\com\msjf\finance\pas\bpm\entity\ProServiceEntity.java

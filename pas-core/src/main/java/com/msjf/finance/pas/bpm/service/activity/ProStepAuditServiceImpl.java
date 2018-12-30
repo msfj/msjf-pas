@@ -6,6 +6,7 @@ import com.msjf.finance.pas.bpm.entity.ProStepAuditEntity;
 import com.msjf.finance.pas.bpm.service.ProStepAuditService;
 import com.msjf.finance.pas.common.StringUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -40,7 +41,23 @@ public class ProStepAuditServiceImpl implements ProStepAuditService {
 
     @Override
     public void addAuditorList(Map<String, Object> mapParams) {
+        if(StringUtils.isEmpty(mapParams.get("list"))){
+            return;
+        }
+        List<Map> list = (List<Map>)mapParams.get("list");
+        if(list.size()==0){
+            return;
+        }
         try{
+
+            Map<String,Object> parMap = new HashMap<String,Object>();
+            parMap.put("proDefKey",list.get(0).get("proDefKey"));
+            parMap.put("stepId",list.get(0).get("stepId"));
+            parMap.put("areaNo",list.get(0).get("areaNo"));
+            List<ProStepAuditEntity> auditList = proStepAuditDao.queryAuditorList(mapParams);
+            if(auditList!=null&&auditList.size()>0){
+                proStepAuditDao.delAuditorList(parMap);
+            }
             proStepAuditDao.addAuditorList(mapParams);
 
         }catch (Exception e){
