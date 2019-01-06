@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pas-core</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <mapper_version>3.4.6</mapper_version>
@@ -447,7 +447,7 @@
                         <configuration>
                             <type>jar</type>
                             <includeTypes>jar</includeTypes>
-                            <!--<useUniqueVersions>false</useUniqueVersions>-->
+                           <useUniqueVersions>false</useUniqueVersions>
                             <outputDirectory>
                                 ${project.build.directory}/lib
                             </outputDirectory>
