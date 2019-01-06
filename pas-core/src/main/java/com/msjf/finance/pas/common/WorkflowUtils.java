@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by chengjunping on 2018/12/27.
@@ -122,8 +121,56 @@ public class WorkflowUtils {
         return null;
     }
 
-    public static Map<String,Activity> getOrderUserTaskMap(BpmnModel model){
-        return getOrderUserTaskMap(model,model.getMainProcess().getFlowElements());
+    public static List<UserTask> getOrderUserTaskMap(BpmnModel model){
+        List<FlowElement> flowElements = (List)model.getMainProcess().getFlowElements();
+        //先找到起始节点
+        FlowElement flowElement = getStartElement(model);
+
+        if (flowElement == null){
+            throw new RuntimeException("未找到起始节点:" + model.toString());
+        }
+
+        List<UserTask> orderUserTasks = new ArrayList<UserTask>(flowElements.size() / 2 +1);
+        List<SequenceFlow> searchedFlowElement = new ArrayList<SequenceFlow>(16);
+        Map<String,FlowElement> flowElementMap = new HashMap<String, FlowElement>(flowElements.size());
+
+        //缓存，避免查找usertask执行多个循环
+        for(FlowElement inflowElement: flowElements) {
+            flowElementMap.put(inflowElement.getId(),inflowElement);
+        }
+
+        List<SequenceFlow> outGoingFlow = ((StartEvent)flowElement).getOutgoingFlows();
+        Deque<SequenceFlow> flowElementsStack = new ArrayDeque<SequenceFlow>(4);
+
+        //加入队列
+        flowElementsStack.addAll(outGoingFlow);
+
+        //一直遍历所有的连接线
+        while (flowElementsStack.size() != 0){
+            //取出一个连接线
+            SequenceFlow seqTemp = flowElementsStack.poll();
+
+            FlowElement targetFlowElement = flowElementMap.get(seqTemp.getTargetRef());
+            //保存已搜索的连接点，避免有环的情况下重复搜索
+            if(!searchedFlowElement.contains(seqTemp)){
+                searchedFlowElement.add(seqTemp);
+            }else {
+                continue;
+            }
+            //如果是用户节点，并且还没放入顺序列表，则放入
+            if (targetFlowElement instanceof UserTask){
+                if(!orderUserTasks.contains((UserTask)targetFlowElement)){
+                    orderUserTasks.add((UserTask)targetFlowElement);
+                }
+            }
+            //查询目标连接点的节点连接列表
+            outGoingFlow = ((FlowNode) targetFlowElement).getOutgoingFlows();
+            //加入队列以便下一步搜索
+            for (SequenceFlow outGoingFlowEle : outGoingFlow){
+                flowElementsStack.offer(outGoingFlowEle);
+            }
+        }
+        return orderUserTasks;
     }
 
     /**
@@ -191,8 +238,8 @@ public class WorkflowUtils {
         return orderUserTasks;
     }
 
-    public static List<Activity> getOrderUserTask(BpmnModel model) {
-        return getOrderUserTaskMap(model).values().stream().collect(Collectors.toList());
+    public static List<UserTask> getOrderUserTask(BpmnModel model) {
+        return getOrderUserTaskMap(model);
     }
 
     /**
@@ -418,7 +465,7 @@ public class WorkflowUtils {
         return variables;
     }
 
-   /* *//**
+    /* *//**
      * 此方法不具有通用性，可能被用户变量污染
      * 导致计算失败
      * @param mapParam

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.msjf.finance.pas.bpm.dao.mapper.PasProTodoDao">
+
+    <resultMap id="BaseResultMap" type="com.msjf.finance.pas.bpm.entity.PasProTodoEntity" >
+        <result column="pro_instance" property="proInstance" jdbcType="VARCHAR" />
+        <result column="act_id" property="actId" jdbcType="VARCHAR" />
+        <result column="act_name" property="actName" jdbcType="VARCHAR" />
+        <result column="pro_def_key" property="proDefKey" jdbcType="VARCHAR" />
+        <result column="pro_def_name" property="proDefName" jdbcType="VARCHAR" />
+        <result column="auditor_id" property="auditorId" jdbcType="VARCHAR" />
+        <result column="auditor_name" property="auditorName" jdbcType="VARCHAR" />
+        <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <insert id="addPasProTodoList" parameterType="java.util.Map"  >
+        insert into pas_pro_todo (
+        pro_instance ,
+        act_id ,
+        act_name ,
+        pro_def_key ,
+        pro_def_name ,
+        auditor_id ,
+        auditor_name ,
+        task_id
+        ) values
+        <foreach collection="list" item="item" index="index"  separator=",">
+            (
+            #{item.proInstance,jdbcType=VARCHAR} ,
+            #{item.actId,jdbcType=VARCHAR} ,
+            #{item.actName,jdbcType=VARCHAR} ,
+            #{item.proDefKey,jdbcType=VARCHAR} ,
+            #{item.proDefName,jdbcType=VARCHAR} ,
+            #{item.auditorId,jdbcType=VARCHAR} ,
+            #{item.auditorName,jdbcType=VARCHAR} ,
+            #{item.taskId,jdbcType=VARCHAR}
+            )
+        </foreach>
+
+    </insert>
+
+    <delete id="delPasProTodoList" parameterType="java.util.Map"  >
+        delete from  pas_pro_todo t
+        <where>
+            <if test=" proInstance != null and proInstance !='' "><![CDATA[ and t.pro_instance=#{proInstance}   ]]></if>
+            <if test=" actId != null and actId !='' "><![CDATA[ and t.act_id=#{actId} ]]></if>
+        </where>
+    </delete>
+
+    <select id="queryPasProTodoList" parameterType="java.util.Map"   resultType="java.util.LinkedHashMap"  >
+        select
+        t.pro_instance "proInstance",
+        t.act_id "actId",
+        t.act_name "actName",
+        t.pro_def_key "proDefKey",
+        t.pro_def_name "proDefName",
+        t.auditor_id "auditorId",
+        t.auditor_name "auditorName",
+        t.task_id "taskId"
+        from pas_pro_todo t
+        <where>
+            <if test=" proInstance != null and proInstance != '' "> and t.pro_instance=#{proInstance} </if>
+            <if test=" actId != null and actId != '' "> and t.act_id=#{actId} </if>
+            <if test=" actName != null and actName != '' "> and t.act_name=#{actName} </if>
+            <if test=" proDefKey != null and proDefKey != '' "> and t.pro_def_key=#{proDefKey} </if>
+            <if test=" proDefName != null and proDefName != '' "> and t.pro_def_name=#{proDefName} </if>
+            <if test=" auditorId != null and auditorId != '' "> and t.auditor_id=#{auditorId} </if>
+            <if test=" auditorName != null and auditorName != '' "> and t.auditor_name=#{auditorName} </if>
+            <if test=" taskId != null and taskId != '' "> and t.task_id=#{taskId} </if>
+        </where>
+    </select>
+
+</mapper>

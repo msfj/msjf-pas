@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.msjf.finance.pas.bpm.dao.mapper.CustProStateDao">
+
+    <resultMap id="BaseResultMap" type="com.msjf.finance.pas.bpm.entity.CustProStateEntity" >
+        <result column="id" property="Id" jdbcType="VARCHAR" />
+        <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+        <result column="cust_no" property="custNo" jdbcType="VARCHAR" />
+        <result column="pro_instance" property="proInstance" jdbcType="VARCHAR" />
+        <result column="pro_def_key" property="proDefKey" jdbcType="VARCHAR" />
+        <result column="pro_def_name" property="proDefName" jdbcType="VARCHAR" />
+        <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+        <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+        <result column="audit_result" property="auditResult" jdbcType="VARCHAR" />
+        <result column="pro_sate" property="proSate" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <insert id="addCustProState" parameterType="java.util.Map"  >
+        insert into cust_pro_state (
+        id ,
+        cust_name ,
+        cust_no ,
+        pro_instance ,
+        pro_def_key ,
+        pro_def_name ,
+        start_time ,
+        end_time ,
+        audit_result,
+        pro_sate
+        ) values (
+            #{Id,jdbcType=VARCHAR} ,
+            #{custName,jdbcType=VARCHAR} ,
+            #{custNo,jdbcType=VARCHAR} ,
+            #{proInstance,jdbcType=VARCHAR} ,
+            #{proDefKey,jdbcType=VARCHAR} ,
+            #{proDefName,jdbcType=VARCHAR} ,
+            #{startTime,jdbcType=VARCHAR} ,
+            #{endTime,jdbcType=VARCHAR} ,
+            #{auditResult,jdbcType=VARCHAR} ,
+            #{proSate,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <delete id="delCustProState" parameterType="java.util.Map"  >
+        delete from  cust_pro_state t
+        <where>
+            <if test=" proInstance != null and proInstance !='' "><![CDATA[ and t.pro_instance=#{proInstance}   ]]></if>
+            <if test=" Id != null and Id !='' "><![CDATA[ and t.id=#{Id} ]]></if>
+        </where>
+    </delete>
+
+    <select id="queryCustProStateList" parameterType="java.util.Map"   resultType="java.util.LinkedHashMap"  >
+        select
+        t.pro_instance "proInstance",
+        t.id "Id",
+        t.cust_name "custName",
+        t.cust_no "custNo",
+        t.pro_def_key "proDefKey",
+        t.pro_def_name "proDefName",
+        t.start_time "startTime",
+        t.end_time "endTime",
+        t.audit_result "auditResult",
+        t.pro_sate "proSate"
+        from cust_pro_state t
+        <where>
+            <if test=" proInstance != null and proInstance != '' "> and t.pro_instance=#{proInstance} </if>
+            <if test=" Id != null and Id != '' "> and t.id=#{Id} </if>
+            <if test=" custName != null and custName != '' "> and t.cust_name=#{custName} </if>
+            <if test=" custNo != null and custNo != '' "> and t.cust_no=#{custNo} </if>
+            <if test=" proDefKey != null and proDefKey != '' "> and t.pro_def_key=#{proDefKey} </if>
+            <if test=" proDefName != null and proDefName != '' "> and t.pro_def_name=#{proDefName} </if>
+            <if test=" startTime != null and startTime != '' "> and t.start_time >=#{startTime} </if>
+            <if test=" endTime != null and endTime != '' "> <![CDATA[and t.end_time <=#{endTime} ]]></if>
+            <if test=" proSate != null and proSate != '' "> and t.pro_sate=#{proSate} </if>
+        </where>
+    </select>
+
+
+    <update id="updateCustProState" parameterType="java.util.Map"  >
+        update  cust_pro_state t
+        <trim prefix="set" suffixOverrides=",">
+            <if test=" endTime != null"> t.end_time=#{endTime}, </if>
+            <if test=" auditResult != null"> t.audit_result=#{auditResult}, </if>
+            <if test=" proSate != null and proSate != '' "> and t.pro_sate=#{proSate}, </if>
+        </trim>
+        <where>
+            <if test=" Id != null and Id != '' "><![CDATA[ and t.id=#{Id} ]]></if>
+            <if test=" proInstance != null and proInstance != '' "><![CDATA[ and t.pro_instance=#{proInstance} ]]></if>
+            <if test=" custNo != null and custNo != '' "> and t.cust_no=#{custNo} </if>
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.msjf.finance.pas.bpm.dao.mapper.PasHisProcessinstanceDao">
+
+    <resultMap id="BaseResultMap" type="com.msjf.finance.pas.bpm.entity.PasHisProcessinstanceEntity" >
+        <result column="id" property="Id" jdbcType="VARCHAR" />
+        <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+        <result column="cust_no" property="custNo" jdbcType="VARCHAR" />
+        <result column="pro_instance" property="proInstance" jdbcType="VARCHAR" />
+        <result column="pro_def_key" property="proDefKey" jdbcType="VARCHAR" />
+        <result column="pro_def_name" property="proDefName" jdbcType="VARCHAR" />
+        <result column="act_id" property="actId" jdbcType="VARCHAR" />
+        <result column="act_name" property="actName" jdbcType="VARCHAR" />
+        <result column="auditor_id" property="auditorId" jdbcType="VARCHAR" />
+        <result column="auditor_name" property="auditorName" jdbcType="VARCHAR" />
+        <result column="auditor_type" property="auditorType" jdbcType="VARCHAR" />
+        <result column="auditor_mob" property="auditorMob" jdbcType="VARCHAR" />
+        <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+        <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+        <result column="audit_result" property="auditResult" jdbcType="VARCHAR" />
+        <result column="message_text" property="messageText" jdbcType="VARCHAR" />
+        <result column="file_urls" property="fileUrls" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <insert id="addPasHisProcessinstance" parameterType="java.util.Map"  >
+        insert into pas_his_processinstance (
+        id ,
+        pro_instance ,
+        pro_def_key ,
+        pro_def_name ,
+        auditor_id,
+        auditor_type,
+        auditor_mob,
+        auditor_name,
+        cust_name ,
+        cust_no ,
+        act_id,
+        act_name,
+        start_time ,
+        end_time ,
+        message_text,
+        file_urls,
+        audit_result
+        ) values (
+        #{Id,jdbcType=VARCHAR} ,
+        #{proInstance,jdbcType=VARCHAR} ,
+        #{proDefKey,jdbcType=VARCHAR} ,
+        #{proDefName,jdbcType=VARCHAR} ,
+        #{auditorId,jdbcType=VARCHAR} ,
+        #{auditorType,jdbcType=VARCHAR} ,
+        #{auditorMob,jdbcType=VARCHAR} ,
+        #{auditorName,jdbcType=VARCHAR} ,
+        #{custName,jdbcType=VARCHAR} ,
+        #{custNo,jdbcType=VARCHAR} ,
+        #{actId,jdbcType=VARCHAR} ,
+        #{actName,jdbcType=VARCHAR} ,
+        #{startTime,jdbcType=VARCHAR} ,
+        #{endTime,jdbcType=VARCHAR} ,
+        #{messageText,jdbcType=VARCHAR} ,
+        #{fileUrls,jdbcType=VARCHAR} ,
+        #{auditResult,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <delete id="delPasHisProcessinstance" parameterType="java.util.Map"  >
+        delete from  pas_his_processinstance t
+        <where>
+            <if test=" proInstance != null and proInstance !='' "><![CDATA[ and t.pro_instance=#{proInstance}   ]]></if>
+            <if test=" Id != null and Id !='' "><![CDATA[ and t.id=#{Id} ]]></if>
+        </where>
+    </delete>
+
+
+    <update id="gen_krcs_mon_jvm_thread_dump_update" parameterType="java.util.Map"  >
+        update  pas_his_processinstance t
+        <trim prefix="set" suffixOverrides=",">
+            <if test=" endTime != null"> t.end_time=#{endTime}, </if>
+            <if test=" auditResult != null"> t.audit_result=#{auditResult}, </if>
+        </trim>
+        <where>
+            <if test=" Id != null and Id != '' "><![CDATA[ and t.id=#{Id} ]]></if>
+            <if test=" proInstance != null and proInstance != '' "><![CDATA[ and t.pro_instance=#{proInstance} ]]></if>
+            <if test=" actId != null and actId != '' "><![CDATA[ and t.act_id=#{actId} ]]></if>
+        </where>
+    </update>
+
+    <select id="queryPasHisProcessinstance" parameterType="java.util.Map"   resultType="java.util.LinkedHashMap"  >
+        select
+        t.id "Id",
+        t.pro_instance "proInstance",
+        t.pro_def_key "proDefKey",
+        t.pro_def_name "proDefName",
+        t.auditor_id "auditorId",
+        t.auditor_type "auditorType",
+        t.auditor_mob "auditorMob",
+        t.auditor_name "auditorName",
+        t.cust_name "custName",
+        t.cust_no "custNo",
+        t.act_id "actId",
+        t.act_name "actName",
+        t.start_time "startTime",
+        t.end_time "endTime",
+        t.message_text "messageText",
+        t.file_urls "fileUrls",
+        t.audit_result "auditResult"
+        from pas_his_processinstance t
+        <where>
+            <if test=" proInstance != null and proInstance != '' "> and t.pro_instance=#{proInstance} </if>
+            <if test=" Id != null and Id != '' "> and t.id=#{Id} </if>
+            <if test=" custName != null and custName != '' "> and t.cust_name=#{custName} </if>
+            <if test=" custNo != null and custNo != '' "> and t.cust_no=#{custNo} </if>
+            <if test=" proDefKey != null and proDefKey != '' "> and t.pro_def_key=#{proDefKey} </if>
+            <if test=" proDefName != null and proDefName != '' "> and t.pro_def_name=#{proDefName} </if>
+            <if test=" startTime != null and startTime != '' "> and t.start_time >=#{startTime} </if>
+            <if test=" endTime != null and endTime != '' "> <![CDATA[and t.end_time <=#{endTime} ]]></if>
+            <if test=" auditorId != null and auditorId != '' "> and t.auditor_id=#{auditorId} </if>
+        </where>
+        order by t.end_time desc
+    </select>
+
+</mapper>
