@@ -57,5 +57,39 @@
           factory-method="getIdentityService" />
     <bean id="managementService" factory-bean="processEngine"
           factory-method="getManagementService"/>
+		  
+	    <bean id="globalEventListener" class="com.msjf.finance.pas.bpm.listener.GlobalEventListener">
+        <property name="handlers">
+            <map>
+                <entry key="TASK_CREATED" value="taskCreateListener"/>
+                <entry key="TASK_COMPLETED" value="taskCompleteListener"/>
+                <entry key="TASK_ASSIGNED" value="taskAssignedListener"/>
+                <entry key="PROCESS_COMPLETED" value="processCompleteListener"/>
+                <entry key="ENTITY_CREATED" value="EntityCreatedListener"/>
+                <entry key="ACTIVITY_STARTED" value="activityStartedListener"/>
+                <entry key="ACTIVITY_COMPLETED" value="activityCompletedListener"/>
+                <entry key="ACTIVITY_SIGNALED" value="activitySignaledListener"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="taskCreateListener" class="com.msjf.finance.pas.bpm.listener.TaskCreateListener">
+        <property name="taskAssignLoader">
+            <ref bean="defaultTaskAssignLoaderImpl" />
+        </property>
+    </bean>
+    <bean id="taskCompleteListener" class="com.msjf.finance.pas.bpm.listener.TaskCompleteListener"></bean>
+    <bean id="taskAssignedListener" class="com.msjf.finance.pas.bpm.listener.TaskAssignedListener">	</bean>
+    <bean id="processCompleteListener" class="com.msjf.finance.pas.bpm.listener.ProcessCompleteListener"></bean>
+    <bean id="EntityCreatedListener" class="com.msjf.finance.pas.bpm.listener.EntityCreatedListener"></bean>
+    <bean id="activityStartedListener" class="com.msjf.finance.pas.bpm.listener.ActivityStartedListener">
+        <property name="taskAssignLoader">
+            <ref bean="defaultTaskAssignLoaderImpl" />
+        </property>
+    </bean>
+    <bean id="activityCompletedListener" class="com.msjf.finance.pas.bpm.listener.ActivityCompletedListener"></bean>
+    <bean id="activitySignaledListener" class="com.msjf.finance.pas.bpm.listener.ActivitySignaledListener"></bean>
+
+    <bean id="defaultTaskAssignLoaderImpl" class="com.msjf.finance.pas.bpm.service.impl.DefaultTaskAssignLoaderImpl"></bean>
 
 </beans>

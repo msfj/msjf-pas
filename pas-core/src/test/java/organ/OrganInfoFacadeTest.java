@@ -2,10 +2,7 @@
 package organ;
 
 import com.msjf.finance.mcs.facade.organ.OrganInfoFacade;
-import com.msjf.finance.pas.bpm.service.ModelService;
-import com.msjf.finance.pas.bpm.service.ProService;
-import com.msjf.finance.pas.bpm.service.ProStepAuditService;
-import com.msjf.finance.pas.bpm.service.ProcessDefinitionService;
+import com.msjf.finance.pas.bpm.service.*;
 import com.msjf.finance.pas.common.response.Response;
 import com.msjf.finance.pas.common.test.SpringTestCase;
 
@@ -39,7 +36,8 @@ public class OrganInfoFacadeTest   extends SpringTestCase{
     OrganInfoFacade organInfoFacade;*/
     @Resource
     ProService proService;
-
+    @Resource
+    PublicTaskService publicTaskService;
     @Test
     /*public  void  queryOrganInfoList(){
        System.out.println("--------------------------"+organInfoFacade.queryOrganInfoList());
@@ -49,7 +47,7 @@ public class OrganInfoFacadeTest   extends SpringTestCase{
     }*/
     public void queryCustInfoList() {
        /* System.out.println("结果--------" + modelService.modelList());*/
-        Map<String, Object> mapParam = new HashMap();
+        Map<String, Object> mapParams = new HashMap();
        /* List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> mapParam1 = new HashMap();
         Map<String, Object> mapParam2 = new HashMap();
@@ -71,13 +69,28 @@ public class OrganInfoFacadeTest   extends SpringTestCase{
         mapParam2.put("areaNo","1");
         list.add(mapParam1);
         list.add(mapParam2);*/
-       mapParam.put("serviceFlag","1");
-        mapParam.put("proDefKey","kingdom_1523358114334:3:504856");
-        /*mapParam.put("proDefKey","pro_1");
-        mapParam.put("stepId","1");
-        mapParam.put("areaNo","1");*/
+        mapParams.put("formParam",2);
+        List<String> list = new ArrayList<>();
+        list.add("111|张三");
+        list.add("222|李四");
+        mapParams.put("assigneeList",list);
+        mapParams.put("userId","000");
+        mapParams.put("processInstanceId","622501");
+        mapParams.put("approve","1");
+        mapParams.put("custName","1213");
+        mapParams.put("custNo","132");
+        mapParams.put("userName","123");
+        mapParams.put("taskId","622525");
+        mapParams.put("comment","530011");
+        mapParams.put("taskDefinitionKey","sid_1525676826092");
+        mapParams.put("processDefinitionId","kingdom_1526978404700:5:3479967");
         Response rs = new Response();
-        proService.updateProService(mapParam,rs);
+        try {
+            publicTaskService.createFlow(mapParams,rs);
+            /*publicTaskService.executeNextStep(mapParams,rs);*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     }
 
