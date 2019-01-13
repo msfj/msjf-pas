@@ -1,56 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="true"><!-- debug="true"è®¾ç½®è°ƒè¯•æ¨¡å¼ -->
-    <!-- æ§åˆ¶å°è¾“å‡º -->
+<?xml version="1.0" encoding="GBK"?>
+<configuration debug="true"><!-- debug="true"ÉèÖÃµ÷ÊÔÄ£Ê½ -->
+    <!-- ¿ØÖÆÌ¨Êä³ö -->
     <property resource="Logback.properties" />
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} è€—æ—¶ï¼š%r æ—¥å¿—æ¥è‡ªï¼š%logger{50} æ—¥å¿—ç±»å‹: %-5p æ—¥å¿—å†…å®¹ï¼š%m%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ºÄÊ±£º%r ÈÕÖ¾À´×Ô£º%logger{50} ÈÕÖ¾ÀàĞÍ: %-5p ÈÕÖ¾ÄÚÈİ£º%m%n</pattern>
         </encoder>
     </appender>
-    <!-- æŒ‰ç…§æ¯å¤©ç”Ÿæˆæ—¥å¿—æ–‡ä»¶ -->
+    <!-- °´ÕÕÃ¿ÌìÉú³ÉÈÕÖ¾ÎÄ¼ş -->
     <appender name="DEFAULT-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${catalina.base}/logs/common-default.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--æ—¥å¿—æ–‡ä»¶è¾“å‡ºçš„æ–‡ä»¶å -->
+            <!--ÈÕÖ¾ÎÄ¼şÊä³öµÄÎÄ¼şÃû -->
             <FileNamePattern>${catalina.base}/logs/common-default-%d{yyyy-MM-dd}.log</FileNamePattern>
-            <!--æ—¥å¿—æ–‡ä»¶ä¿ç•™å¤©æ•° -->
+            <!--ÈÕÖ¾ÎÄ¼ş±£ÁôÌìÊı -->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!--æ ¼å¼åŒ–è¾“å‡ºï¼š%dè¡¨ç¤ºæ—¥æœŸï¼Œ%threadè¡¨ç¤ºçº¿ç¨‹åï¼Œ%-5levelï¼šçº§åˆ«ä»å·¦æ˜¾ç¤º5ä¸ªå­—ç¬¦å®½åº¦%msgï¼šæ—¥å¿—æ¶ˆæ¯ï¼Œ%næ˜¯æ¢è¡Œç¬¦ -->
+            <!--¸ñÊ½»¯Êä³ö£º%d±íÊ¾ÈÕÆÚ£¬%thread±íÊ¾Ïß³ÌÃû£¬%-5level£º¼¶±ğ´Ó×óÏÔÊ¾5¸ö×Ö·û¿í¶È%msg£ºÈÕÖ¾ÏûÏ¢£¬%nÊÇ»»ĞĞ·û -->
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
-        <!--æ—¥å¿—æ–‡ä»¶æœ€å¤§çš„å¤§å° -->
+        <!--ÈÕÖ¾ÎÄ¼ş×î´óµÄ´óĞ¡ -->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
-    <!-- æŒ‰ç…§æ¯å¤©ç”Ÿæˆæ—¥å¿—æ–‡ä»¶ -->
+    <!-- °´ÕÕÃ¿ÌìÉú³ÉÈÕÖ¾ÎÄ¼ş -->
     <appender name="INFO-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${catalina.base}/logs/info-log.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--æ—¥å¿—æ–‡ä»¶è¾“å‡ºçš„æ–‡ä»¶å -->
+            <!--ÈÕÖ¾ÎÄ¼şÊä³öµÄÎÄ¼şÃû -->
             <FileNamePattern>${catalina.base}/logs/info-log-%d{yyyy-MM-dd}.log</FileNamePattern>
-            <!--æ—¥å¿—æ–‡ä»¶ä¿ç•™å¤©æ•° -->
+            <!--ÈÕÖ¾ÎÄ¼ş±£ÁôÌìÊı -->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!-- æ ¼å¼åŒ–è¾“å‡ºï¼š%dè¡¨ç¤ºæ—¥æœŸï¼Œ%threadè¡¨ç¤ºçº¿ç¨‹åï¼Œ%-5levelï¼šçº§åˆ«ä»å·¦æ˜¾ç¤º5ä¸ªå­—ç¬¦å®½åº¦%msgï¼šæ—¥å¿—æ¶ˆæ¯ï¼Œ%næ˜¯æ¢è¡Œç¬¦ -->
+            <!-- ¸ñÊ½»¯Êä³ö£º%d±íÊ¾ÈÕÆÚ£¬%thread±íÊ¾Ïß³ÌÃû£¬%-5level£º¼¶±ğ´Ó×óÏÔÊ¾5¸ö×Ö·û¿í¶È%msg£ºÈÕÖ¾ÏûÏ¢£¬%nÊÇ»»ĞĞ·û -->
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
-        <!--æ—¥å¿—æ–‡ä»¶æœ€å¤§çš„å¤§å° -->
+        <!--ÈÕÖ¾ÎÄ¼ş×î´óµÄ´óĞ¡ -->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
-    <!-- æŒ‡å®šæŸä¸€ä¸ªåŒ…æˆ–è€…æŸä¸€ä¸ªç±»çš„æ‰“å°çº§åˆ«ä»¥åŠæ˜¯å¦ä¼ å…¥rootè¿›è¡Œæ‰“å° -->
-    <!-- addtivity:æ˜¯å¦å‘ä¸Šçº§logerä¼ é€’æ‰“å°ä¿¡æ¯ã€‚é»˜è®¤æ˜¯trueã€‚-->
-    <!-- <loger>å¯ä»¥åŒ…å«é›¶ä¸ªæˆ–å¤šä¸ª<appender-ref>å…ƒç´ ï¼Œæ ‡è¯†è¿™ä¸ªappenderå°†ä¼šæ·»åŠ åˆ°è¿™ä¸ªlogerã€‚-->
-    <!-- name:ç”¨æ¥æŒ‡å®šå—æ­¤logerçº¦æŸçš„æŸä¸€ä¸ªåŒ…æˆ–è€…å…·ä½“çš„æŸä¸€ä¸ªç±»ã€‚-->
+    <!-- Ö¸¶¨Ä³Ò»¸ö°ü»òÕßÄ³Ò»¸öÀàµÄ´òÓ¡¼¶±ğÒÔ¼°ÊÇ·ñ´«Èëroot½øĞĞ´òÓ¡ -->
+    <!-- addtivity:ÊÇ·ñÏòÉÏ¼¶loger´«µİ´òÓ¡ĞÅÏ¢¡£Ä¬ÈÏÊÇtrue¡£-->
+    <!-- <loger>¿ÉÒÔ°üº¬Áã¸ö»ò¶à¸ö<appender-ref>ÔªËØ£¬±êÊ¶Õâ¸öappender½«»áÌí¼Óµ½Õâ¸öloger¡£-->
+    <!-- name:ÓÃÀ´Ö¸¶¨ÊÜ´ËlogerÔ¼ÊøµÄÄ³Ò»¸ö°ü»òÕß¾ßÌåµÄÄ³Ò»¸öÀà¡£-->
     <!-- level:
-            ç”¨æ¥è®¾ç½®æ‰“å°çº§åˆ«ï¼Œå¤§å°å†™æ— å…³ï¼šTRACE, DEBUG, INFO, WARN, ERROR, ALL å’Œ OFFï¼Œè¿˜æœ‰ä¸€ä¸ªç‰¹ä¿—å€¼INHERITEDæˆ–è€…åŒä¹‰è¯NULLï¼Œä»£è¡¨å¼ºåˆ¶æ‰§è¡Œä¸Šçº§çš„çº§åˆ«ã€‚
-            å¦‚æœæœªè®¾ç½®æ­¤å±æ€§ï¼Œé‚£ä¹ˆå½“å‰logerå°†ä¼šç»§æ‰¿ä¸Šçº§çš„çº§åˆ«ã€‚-->
-    <!-- ä¸ºæ‰€æœ‰å¼€å¤´ä¸ºdaoçš„ç±»æ‰“å°sqlè¯­å¥ -->
+            ÓÃÀ´ÉèÖÃ´òÓ¡¼¶±ğ£¬´óĞ¡Ğ´ÎŞ¹Ø£ºTRACE, DEBUG, INFO, WARN, ERROR, ALL ºÍ OFF£¬»¹ÓĞÒ»¸öÌØË×ÖµINHERITED»òÕßÍ¬Òå´ÊNULL£¬´ú±íÇ¿ÖÆÖ´ĞĞÉÏ¼¶µÄ¼¶±ğ¡£
+            Èç¹ûÎ´ÉèÖÃ´ËÊôĞÔ£¬ÄÇÃ´µ±Ç°loger½«»á¼Ì³ĞÉÏ¼¶µÄ¼¶±ğ¡£-->
+    <!-- ÎªËùÓĞ¿ªÍ·ÎªdaoµÄÀà´òÓ¡sqlÓï¾ä -->
     <!-- <logger name="dao" level="DEBUG">
         <appender-ref ref="INFO-APPENDER" />
     </logger> -->
@@ -61,7 +61,7 @@
     <logger name="dao" level="DEBUG">
         <appender-ref ref="INFO-APPENDER" />
     </logger>
-    <!-- ä¹Ÿæ˜¯<loger>å…ƒç´ ï¼Œä½†æ˜¯å®ƒæ˜¯æ ¹logerã€‚åªæœ‰ä¸€ä¸ªlevelå±æ€§ï¼Œåº”ä¸ºå·²ç»è¢«å‘½åä¸º"root". -->
+    <!-- Ò²ÊÇ<loger>ÔªËØ£¬µ«ÊÇËüÊÇ¸ùloger¡£Ö»ÓĞÒ»¸ölevelÊôĞÔ£¬Ó¦ÎªÒÑ¾­±»ÃüÃûÎª"root". -->
     <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEFAULT-APPENDER"/>

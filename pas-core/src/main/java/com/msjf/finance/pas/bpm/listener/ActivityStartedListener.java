@@ -4,7 +4,6 @@ package com.msjf.finance.pas.bpm.listener;
 import com.msjf.finance.pas.bpm.common.ParametersConstant;
 import com.msjf.finance.pas.bpm.service.EventHandler;
 import com.msjf.finance.pas.bpm.service.TaskAssignLoader;
-import com.msjf.finance.pas.common.VerificationUtil;
 import com.msjf.finance.pas.common.WorkflowUtils;
 import org.activiti.engine.EngineServices;
 import org.activiti.engine.delegate.event.ActivitiActivityEvent;
