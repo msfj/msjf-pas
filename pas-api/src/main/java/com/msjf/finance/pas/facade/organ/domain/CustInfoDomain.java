@@ -1,6 +1,7 @@
 package com.msjf.finance.pas.facade.organ.domain;
 
-import com.msjf.finance.pas.common.response.BaseDomain;
+
+import com.msjf.finance.msjf.core.domian.BaseDomain;
 
 public class CustInfoDomain extends BaseDomain {
     private String customerno; //客户号
