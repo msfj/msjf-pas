@@ -62,7 +62,7 @@
    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="basePackage" value="com.msjf.finance.pas"/>
-        <property name="annotationClass" value="com.msjf.finance.pas.common.dao.MyBatisDao"/>
+        <property name="annotationClass" value="com.msjf.finance.msjf.core.dao.MyBatisDao"/>
         <property name="markerInterface" value="tk.mybatis.mapper.common.Mapper"/>
         <property name="properties">
             <value>
