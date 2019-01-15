@@ -1,6 +1,7 @@
 package com.msjf.finance.pas.modules.organ.entity;
 
-import com.msjf.finance.pas.common.response.BaseEntity;
+
+import com.msjf.finance.msjf.core.entity.BaseEntity;
 
 public class CustEntity extends BaseEntity {
     private String customerno; //客户号

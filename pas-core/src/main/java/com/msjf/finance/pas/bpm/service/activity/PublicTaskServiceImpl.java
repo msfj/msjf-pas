@@ -1,6 +1,7 @@
 package com.msjf.finance.pas.bpm.service.activity;
 
 
+import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.bpm.dao.mapper.CustProStateDao;
 import com.msjf.finance.pas.bpm.dao.mapper.PasHisProcessinstanceDao;
 import com.msjf.finance.pas.bpm.dao.mapper.PasProTodoDao;
@@ -9,7 +10,6 @@ import com.msjf.finance.pas.bpm.service.ProcessDefinitionService;
 import com.msjf.finance.pas.bpm.service.ProcessInstanceService;
 import com.msjf.finance.pas.bpm.service.PublicTaskService;
 import com.msjf.finance.pas.common.*;
-import com.msjf.finance.pas.common.response.Response;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.bpmn.model.UserTask;
 import org.activiti.engine.*;
@@ -19,13 +19,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
+
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import static com.msjf.finance.pas.bpm.common.ParametersConstant.PDID;
-import static com.msjf.finance.pas.common.VerificationUtil.valueOf;
+import static com.msjf.finance.pas.common.StringUtil.valueOf;
 
 /**
  * Created by 成俊平 on 2018/12/28.
@@ -174,11 +176,11 @@ public class PublicTaskServiceImpl implements PublicTaskService {
 
     @Override
     public void executeNextStep(HashMap<String, Object> mapParam, Response rs) throws Exception {
-        if (VerificationUtil.isNull(mapParam.get("processInstanceId"))) {
+        if (StringUtil.isNull(mapParam.get("processInstanceId"))) {
             rs.fail("0","processInstanceId不能为空");
             return;
         }
-        if (VerificationUtil.isNull(mapParam.get("taskId"))) {
+        if (StringUtil.isNull(mapParam.get("taskId"))) {
             rs.fail("0","taskId");
             return;
         }
@@ -197,27 +199,27 @@ public class PublicTaskServiceImpl implements PublicTaskService {
      */
     public void checkCreateFlowParam(Map<String, Object> mapParam,
                                      Response rs) {
-        if (VerificationUtil.isNull("formParam")) {
+        if (StringUtil.isNull("formParam")) {
             rs.fail("0","表单参数不存在!");
             return;
         }
-        if (VerificationUtil.isNull(mapParam.get("processDefinitionId"))) {
+        if (StringUtil.isNull(mapParam.get("processDefinitionId"))) {
             rs.fail("0","流程定义Id不存在!");
             return;
         }
-        if (VerificationUtil.isNull(mapParam.get("custName"))) {
+        if (StringUtil.isNull(mapParam.get("custName"))) {
             rs.fail("0","企业名称不存在!");
             return;
         }
-        if (VerificationUtil.isNull(mapParam.get("custNo"))) {
+        if (StringUtil.isNull(mapParam.get("custNo"))) {
             rs.fail("0","企业客户号不存在!");
             return;
         }
-        if (VerificationUtil.isNull(mapParam.get("userId"))) {
+        if (StringUtil.isNull(mapParam.get("userId"))) {
             rs.fail("0","当前用户id不存在!");
             return;
         }
-        if (VerificationUtil.isNull(mapParam.get("userName"))) {
+        if (StringUtil.isNull(mapParam.get("userName"))) {
             rs.fail("0","当前用户名称不存在!");
             return;
         }
@@ -291,7 +293,7 @@ public class PublicTaskServiceImpl implements PublicTaskService {
         String bexno = valueOf(formParamHashMap.get("applytype"));
         String pageid = valueOf(formParamHashMap.get("pageid"));
         Map<String, Object> resultHashMap = new HashMap<String, Object>();
-        if(VerificationUtil.isEmpty(pageid)){
+        if(StringUtil.isNull(pageid)){
 
             resultHashMap.put("bexno", bexno);
             resultHashMap.put("title", formParamHashMap.get("title"));
@@ -390,7 +392,7 @@ public class PublicTaskServiceImpl implements PublicTaskService {
         BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
         List<UserTask> userTaskList = WorkflowUtils.getOrderUserTask(bpmnModel);
 
-        if(VerificationUtil.isEmpty(userTaskList)){
+        if(ObjectUtils.isEmpty(userTaskList)){
             throw new RuntimeException("流程模型异常，找不到第一个模型节点!");
         }
       processInstanceService.submitStartFormAndStartProcessInstance(mapParams,rs);

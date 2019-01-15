@@ -1,8 +1,8 @@
 package com.msjf.finance.pas.bpm.web;
 
 
+import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.bpm.service.ModelService;
-import com.msjf.finance.pas.common.response.Response;
 
 import org.activiti.engine.repository.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class ModelController {
         mapParams.put("pageSize",request.getParameter("pageSize"));
         mapParams.put("pageNumber",request.getParameter("pageNumber"));
         Response rs = new Response();
-        List<Model> list = modelService.modelListPage(mapParams,rs);
+        modelService.modelListPage(mapParams);
             return rs;
     }
 }

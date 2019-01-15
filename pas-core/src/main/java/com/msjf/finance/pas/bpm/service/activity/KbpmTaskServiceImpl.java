@@ -5,11 +5,11 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
+import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.bpm.common.ParametersConstant;
 import com.msjf.finance.pas.bpm.service.KbpmTaskService;
 import com.msjf.finance.pas.common.StringUtil;
 import com.msjf.finance.pas.common.WorkflowUtils;
-import com.msjf.finance.pas.common.response.Response;
 import org.activiti.bpmn.model.*;
 import org.activiti.engine.*;
 import org.activiti.engine.delegate.Expression;
@@ -38,6 +38,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.*;
 
@@ -277,7 +278,7 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
                 //没有审核完，这里进行可能的单节点任务审核人赋值
                 // 因为当前是单实例节点，故一定会走到下一步，这里无需判断即可进行获取下一批用户任务
                 List<Task> nextTasks = taskService.createTaskQuery().processInstanceId(task.getProcessInstanceId()).list();
-                if(!VerificationUtil.isEmpty(nextTasks)){
+                if(!ObjectUtils.isEmpty(nextTasks)){
                     //如果发生节点切换，这里将可能进行对新单节点设置审核人
                     if(UserTaskIsSwitched(currentTaskDefinitionKey,nextTasks)){
                         //  @see TaskAssignedListener
@@ -347,7 +348,7 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
      */
     public boolean UserTaskIsSwitched(String currentTaskDefinitionKey,List<Task> nextTasks){
 
-        if(!VerificationUtil.isEmpty(nextTasks)){
+        if(!ObjectUtils.isEmpty(nextTasks)){
             Task task = nextTasks.get(0);
             if(task.getTaskDefinitionKey().equals(currentTaskDefinitionKey)){
                 return false;
@@ -866,8 +867,8 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
     /**
      * 处理活动是否是userTask，是则返回，不是则通过出口继续向下寻找
      *
-     * @param activity
-     * @param map
+     * @param
+     * @param
      * @return
      */
    /* private Set<ActivityBehavior> nextActivityBehavior(PvmActivity activity, Map<String, Object> map) {
@@ -1164,7 +1165,7 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
      */
     public void getCurrentActivityNames(Map<String, Object> paramMap,Response rs) {
         String processInstanceIds = (String) paramMap.get("processInstanceIds");
-        if(VerificationUtil.isEmpty(processInstanceIds)){
+        if(StringUtil.isNull(processInstanceIds)){
             rs.fail("0","流程实例不能为空!");
             return;
         }
@@ -1194,17 +1195,17 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
      */
     public void isTheLastStep(Map<String, Object> paramMap,Response rs) {
         String taskId = (String) paramMap.get("taskId");
-        if(VerificationUtil.isEmpty(taskId)){
+        if(StringUtil.isNull(taskId)){
             rs.fail("0","任务ID不能为空!");
             return;
         }
         String approve = (String) paramMap.get("approve");
-        if(VerificationUtil.isEmpty(approve)){
+        if(StringUtil.isNull(approve)){
             rs.fail("0","approve变量不能为空!");
             return;
         }
         String comment = (String) paramMap.get("comment");
-        if(VerificationUtil.isEmpty(comment)){
+        if(StringUtil.isNull(comment)){
             rs.fail("0","comment不能为空!");
             return;
         }
@@ -1241,7 +1242,7 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
             if(e.getCause() instanceof  org.activiti.engine.impl.javax.el.PropertyNotFoundException){
                 BpmnModel bpmnModel = repositoryService.getBpmnModel(task.getProcessDefinitionId());
                 UserTask userTask = (UserTask) WorkflowUtils.getSpecifiedElement(task.getTaskDefinitionKey(),bpmnModel);
-                if(VerificationUtil.isEmpty(userTask.getOutgoingFlows())){
+                if(ObjectUtils.isEmpty(userTask.getOutgoingFlows())){
                     islastMap.put("islast","1");
                     rs.success("1","查询是否最后一个流程任务成功",Arrays.asList(islastMap));
                     /*ResultUtil.makerSusResults("查询是否最后一个流程任务成功!", Arrays.asList(islastMap),rs);*/

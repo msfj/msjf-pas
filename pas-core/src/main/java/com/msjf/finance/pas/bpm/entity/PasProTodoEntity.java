@@ -1,6 +1,7 @@
 package com.msjf.finance.pas.bpm.entity;
 
-import com.msjf.finance.pas.common.response.BaseEntity;
+
+import com.msjf.finance.msjf.core.entity.BaseEntity;
 
 /**
  * Created by Jsan on 2019/1/4.

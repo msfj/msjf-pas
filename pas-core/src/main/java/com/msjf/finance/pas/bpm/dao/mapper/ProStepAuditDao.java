@@ -1,7 +1,7 @@
 package com.msjf.finance.pas.bpm.dao.mapper;
 
+import com.msjf.finance.msjf.core.dao.MyBatisDao;
 import com.msjf.finance.pas.bpm.entity.ProStepAuditEntity;
-import com.msjf.finance.pas.common.dao.MyBatisDao;
 
 import java.util.List;
 import java.util.Map;

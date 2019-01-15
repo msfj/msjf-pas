@@ -1,7 +1,7 @@
 package com.msjf.finance.pas.bpm.service;
 
 import com.alibaba.fastjson.JSONArray;
-import com.msjf.finance.pas.common.response.Response;
+import com.msjf.finance.msjf.core.response.Response;
 import org.activiti.engine.impl.pvm.PvmTransition;
 
 import java.util.List;

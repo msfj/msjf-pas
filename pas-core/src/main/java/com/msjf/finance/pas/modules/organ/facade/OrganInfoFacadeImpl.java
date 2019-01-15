@@ -1,6 +1,7 @@
 package com.msjf.finance.pas.modules.organ.facade;
 
-import com.msjf.finance.pas.common.response.Response;
+
+import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.facade.organ.OrganInfoFacade;
 import com.msjf.finance.pas.facade.organ.domain.OrganInfoDomain;
 import com.msjf.finance.pas.modules.organ.service.OrganInfoService;

@@ -1,6 +1,6 @@
 package com.msjf.finance.pas.facade.act.domain;
 
-import com.msjf.finance.pas.common.response.BaseDomain;
+import com.msjf.finance.msjf.core.domian.BaseDomain;
 
 public class PagDomain extends BaseDomain {
     private String pageSize;

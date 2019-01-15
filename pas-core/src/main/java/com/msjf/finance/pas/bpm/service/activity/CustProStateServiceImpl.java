@@ -1,8 +1,8 @@
 package com.msjf.finance.pas.bpm.service.activity;
 
+import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.bpm.dao.mapper.CustProStateDao;
 import com.msjf.finance.pas.bpm.service.CustProStateService;
-import com.msjf.finance.pas.common.response.Response;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,7 +20,7 @@ public class CustProStateServiceImpl implements CustProStateService {
     CustProStateDao custProStateDao;
 
     @Override
-    public List queryCustProStateList(Map<String, Object> mapParams, Response rs) {
+    public List queryCustProStateList(Map<String, Object> mapParams) {
         try {
             List<Map> custEntityList = custProStateDao.queryCustProStateList(mapParams);
 

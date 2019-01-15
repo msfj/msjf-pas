@@ -11,6 +11,7 @@ import org.activiti.engine.delegate.event.ActivitiEvent;
 import org.activiti.engine.delegate.event.impl.ActivitiActivityEventImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -130,7 +131,7 @@ public class ActivityStartedListener implements EventHandler {
     private List<String> getDepartmentListFromResult(Object result){
         if(result instanceof List){
             List resultList = (List)result;
-            if(VerificationUtil.isEmpty(resultList)){
+            if(ObjectUtils.isEmpty(resultList)){
                 throw new RuntimeException("bex获取部门信息不能为空!");
             }
             return (List<String>)resultList.stream().map(e ->

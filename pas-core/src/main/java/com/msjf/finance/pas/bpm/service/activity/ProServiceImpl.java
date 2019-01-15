@@ -1,10 +1,10 @@
 package com.msjf.finance.pas.bpm.service.activity;
 
+import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.bpm.dao.mapper.ProServiceDao;
 import com.msjf.finance.pas.bpm.entity.ProServiceEntity;
 import com.msjf.finance.pas.bpm.service.ProService;
 import com.msjf.finance.pas.common.StringUtil;
-import com.msjf.finance.pas.common.response.Response;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

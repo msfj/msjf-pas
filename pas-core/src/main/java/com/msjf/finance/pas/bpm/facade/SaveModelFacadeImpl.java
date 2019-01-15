@@ -1,7 +1,7 @@
 package com.msjf.finance.pas.bpm.facade;
 
+import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.bpm.service.ModelService;
-import com.msjf.finance.pas.common.response.Response;
 import com.msjf.finance.pas.facade.act.SaveModelFacade;
 import com.msjf.finance.pas.facade.act.domain.SaveModelDomain;
 import org.springframework.stereotype.Service;
