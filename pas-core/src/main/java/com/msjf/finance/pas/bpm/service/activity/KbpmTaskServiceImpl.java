@@ -8,7 +8,6 @@ import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
 import com.msjf.finance.pas.bpm.common.ParametersConstant;
 import com.msjf.finance.pas.bpm.service.KbpmTaskService;
 import com.msjf.finance.pas.common.StringUtil;
-import com.msjf.finance.pas.common.VerificationUtil;
 import com.msjf.finance.pas.common.WorkflowUtils;
 import com.msjf.finance.pas.common.response.Response;
 import org.activiti.bpmn.model.*;
@@ -39,7 +38,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionStatus;
 
 import java.util.*;
 

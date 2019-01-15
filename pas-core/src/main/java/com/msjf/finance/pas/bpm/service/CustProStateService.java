@@ -1,7 +1,4 @@
 package com.msjf.finance.pas.bpm.service;
-
-import com.msjf.finance.pas.common.response.Response;
-
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +11,7 @@ public interface CustProStateService {
      * 查询企业流程基本信息
      * @return
      */
-    List queryCustProStateList(Map<String, Object> mapParams, Response rs);
+    Response<List> queryCustProStateList(Map<String, Object> mapParams);
 
 
     /**
