@@ -13,8 +13,7 @@
 
     <!-- 配置数据源 -->
     <bean name="dataSource"
-          class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
-          destroy-method="close">
+          class="com.alibaba.druid.pool.DruidDataSource"   init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc_driverClassName}" />
         <property name="url" value="${jdbc_url}" />
         <property name="username" value="${jdbc_username}" />
@@ -24,21 +23,21 @@
         <!-- 连接池最大使用连接数量 -->
         <property name="maxActive" value="100" />
         <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="1" />
+        <property name="minIdle" value="5" />
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="60000" />
         <property name="validationQuery" value="${validationQuery}" />
         <property name="testOnBorrow" value="true" />
-        <property name="testOnReturn" value="true" />
+        <property name="testOnReturn" value="false" />
         <property name="testWhileIdle" value="true" />
         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
         <property name="timeBetweenEvictionRunsMillis" value="60000" />
         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="25200000" />
+        <property name="minEvictableIdleTimeMillis" value="300000" />
         <!-- 打开removeAbandoned功能 -->
         <property name="removeAbandoned" value="true" />
-        <!-- 1800秒，也就是30分钟 -->
-        <property name="removeAbandonedTimeout" value="1800" />
+        <!-- 180秒，也就是3分钟 -->
+        <property name="removeAbandonedTimeout" value="3600" />
         <!-- 关闭abanded连接时输出错误日志 -->
         <property name="logAbandoned" value="true" />
         <!-- 监控数据库 -->

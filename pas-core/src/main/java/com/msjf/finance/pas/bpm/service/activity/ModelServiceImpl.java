@@ -88,7 +88,7 @@ public class ModelServiceImpl implements ModelService {
   模型列表查询分页
  */
     @Override
-    public List<Model> modelListPage(Map<String, Object> mapParams, Response rs) {
+    public Response modelListPage(Map<String, Object> mapParams) {
         int pageSize = (Integer) mapParams.get(PAGE_SIZE);
         int pageNumber = (Integer) mapParams.get(PAGE_NUMBER);
         int firstResult = pageSize * (pageNumber - 1);
@@ -99,18 +99,16 @@ public class ModelServiceImpl implements ModelService {
         ModelQuery modelQuery = repositoryService.createModelQuery();
         List<Model> list = modelQuery.orderByCreateTime().desc().listPage(firstResult, pageSize);
         JSONArray array = (JSONArray) JSON.toJSON(list);
-        System.out.println(array.toString());
-        return list;
+        return new Response().success(array);
     }
 
     /**
      * 模型创建
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void create(Map<String, Object> mapParams, Response rs) {
+    public Response create(Map<String, Object> mapParams) {
         String name = (String) mapParams.get("name");
         //String key = (String) mapParams.get("key");
         String description = (String) mapParams.get("description");
@@ -141,6 +139,7 @@ public class ModelServiceImpl implements ModelService {
             repositoryService.addModelEditorSource(modelData.getId(), editorNode.toString().getBytes("utf-8"));
 
             JSONObject object = (JSONObject) JSON.toJSON(modelData);
+            return  new Response().success(object);
         }
         catch (Exception e) {
             logger.error("创建模型失败", e);
@@ -152,10 +151,9 @@ public class ModelServiceImpl implements ModelService {
      * 流程复制
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void copy(Map<String, Object> mapParams, Response rs) {
+    public Response copy(Map<String, Object> mapParams) {
         String name = (String) mapParams.get("name");
         String oldModelId = (String) mapParams.get("oldModelId");
         String description = (String) mapParams.get("description");
@@ -181,8 +179,7 @@ public class ModelServiceImpl implements ModelService {
                     repositoryService.getModelEditorSourceExtra(oldModelId));
 
             JSONObject object = (JSONObject) JSON.toJSON(newModelData);
-
-
+            return new Response().success(object);
         }
         catch (Exception e) {
             if (logger.isErrorEnabled()) {
@@ -197,10 +194,9 @@ public class ModelServiceImpl implements ModelService {
      * 模型详情数据
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void editorJson(Map<String, Object> mapParams, Response rs) {
+    public Response editorJson(Map<String, Object> mapParams) {
         String modelId = (String) mapParams.get(MID);
 
         JSONObject modelNode = null;
@@ -221,22 +217,21 @@ public class ModelServiceImpl implements ModelService {
                         .parseObject(new String(repositoryService.getModelEditorSource(model.getId()), "utf-8"));
                 modelNode.put("model", editorJsonNode);
 
-System.out.println(modelNode.toString());
             }
             catch (Exception e) {
                 logger.error("Error creating model JSON ", e);
             }
         }
+        return  new Response().success(modelNode);
     }
 
     /**
      * 保存模型
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void saveModel(Map<String, Object> mapParams, Response rs) {
+    public Response saveModel(Map<String, Object> mapParams) {
         String modelId = (String) mapParams.get(MID);
         String name = (String) mapParams.get("name");
         String description = (String) mapParams.get("description");
@@ -253,7 +248,7 @@ System.out.println(modelNode.toString());
         }
         catch (UnsupportedEncodingException e) {
             logger.error("解码出错", e);
-            return;
+            return new Response().fail("0","保存失败");
         }
 
         if (logger.isDebugEnabled()) {
@@ -287,8 +282,7 @@ System.out.println(modelNode.toString());
             final byte[] result = outStream.toByteArray();
             repositoryService.addModelEditorSourceExtra(model.getId(), result);
             outStream.close();
-
-
+            return  new Response().success("1","保存成功","保存成功");
         }
         catch (Exception e) {
             logger.error("Error saving model", e);
@@ -300,10 +294,9 @@ System.out.println(modelNode.toString());
      * 根据模型发布流程
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void deploy(Map<String, Object> mapParams, Response rs) {
+    public Response deploy(Map<String, Object> mapParams) {
         String modelId = (String) mapParams.get(MID);
         if (logger.isDebugEnabled()) {
             logger.debug("##############ModelServiceImpl#deploy : {}", modelId);
@@ -311,7 +304,7 @@ System.out.println(modelNode.toString());
         try {
             Model modelData = repositoryService.getModel(modelId);
             if (modelData == null) {
-                return;
+                return new Response().fail("0","模型数据不存在");
             }
 
             ObjectNode modelNode = (ObjectNode) new ObjectMapper()
@@ -329,7 +322,7 @@ System.out.println(modelNode.toString());
 
             JSONObject object = (JSONObject) JSON.toJSON(deployment);
 
-            System.out.println(object.toString());
+            return  new Response().success("1","部署成功",deployment.getId());
         }
         catch (Exception e) {
             logger.error("根据模型部署流程失败：modelId={}", modelId);
@@ -342,10 +335,9 @@ System.out.println(modelNode.toString());
      * 删除模型
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void delete(Map<String, Object> mapParams, Response rs) {
+    public Response delete(Map<String, Object> mapParams) {
         String modelId = (String) mapParams.get(MID);
         final int pageSize = 999;
         final int firstResult = 0;
@@ -385,7 +377,7 @@ System.out.println(modelNode.toString());
                     repositoryService.deleteDeployment(deploymentId, true);
                 } else {
                     logger.info(String.format("该流程部署包含 %d 个未结束任务，请处理后再进行删除", nrOfProcessInstances));
-                    return;
+                    return new Response().fail("0",String.format("该流程部署包含 %d 个未结束任务，请处理后再进行删除", nrOfProcessInstances));
                 }
             }
             repositoryService.deleteModel(modelId);
@@ -393,24 +385,23 @@ System.out.println(modelNode.toString());
         catch (Exception e) {
             logger.error("删除失败 : ", e);
         }
+        return  new Response().success("1","删除成功",modelId);
     }
 
     /**
      * 模型数据导出
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void export(Map<String, Object> mapParams, Response rs) {
+    public Response export(Map<String, Object> mapParams) {
         String modelId = (String) mapParams.get(MID);
         String type = (String) mapParams.get("type");
 
         try {
             Model modelData = repositoryService.getModel(modelId);
             if (modelData == null) {
-               /* rs.failed("模型不存在");*/
-                return;
+                return new Response().fail("0","模型不存在");
             }
             BpmnJsonConverter jsonConverter = new BpmnJsonConverter();
             byte[] modelEditorSource = repositoryService.getModelEditorSource(modelData.getId());
@@ -421,7 +412,7 @@ System.out.println(modelNode.toString());
             // 处理异常
             if (bpmnModel.getMainProcess() == null) {
                /* rs.failed("没有内容，不能导出");*/
-                return;
+                return new Response().fail("0","没有内容，不能导出");
             }
 
             if (type.equals("xml")) {
@@ -430,6 +421,7 @@ System.out.println(modelNode.toString());
                 /*rs.successful("导出成功");
                 rs.setResult(Base64.encodeBase64String(exportBytes));
                 rs.setResType(Constant.WS_TYPE_STRING);*/
+                return new Response().success("1","导出成功",Base64.encodeBase64String(exportBytes));
             }
            /* else if (type.equals("json")) {
                 rs.successful("导出成功");
@@ -441,16 +433,16 @@ System.out.println(modelNode.toString());
             logger.error("导出model的xml文件失败：modelId={}, type={}", modelId, type);
             logger.error("导出model的xml文件失败：", e);
         }
+        return  null;
     }
 
     /**
      * 模型的图片
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void initImage(Map<String, Object> mapParams, Response rs) {
+    public Response initImage(Map<String, Object> mapParams) {
         String modelId = (String) mapParams.get(MID);
 
         byte[] editorSourceExtra = repositoryService.getModelEditorSourceExtra(modelId);
@@ -461,9 +453,11 @@ System.out.println(modelNode.toString());
             rs.setResult(base64Str);
             rs.setResType(Constant.WS_TYPE_STRING);*/
             System.out.println(base64Str);
+            return new Response().success("1","获取成功",base64Str);
         }
         else {
             /*rs.failed("没有找到图片");*/
+            return  new Response().fail("0","没有找到图片");
         }
     }
 
@@ -471,10 +465,9 @@ System.out.println(modelNode.toString());
      * 模型数据导出为文件流
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void export(ServletRequest request, ServletResponse response, Map<String, Object> mapParams, Response rs) {
+    public Response export(ServletRequest request, ServletResponse response, Map<String, Object> mapParams) {
         String modelId = (String) mapParams.get(MID);
         String type = (String) mapParams.get("type");
 
@@ -482,7 +475,7 @@ System.out.println(modelNode.toString());
             Model modelData = repositoryService.getModel(modelId);
             if (modelData == null) {
                /* rs.failed("模型不存在");*/
-                return;
+                return new Response().fail("0","模型不存在");
             }
             BpmnJsonConverter jsonConverter = new BpmnJsonConverter();
             byte[] modelEditorSource = repositoryService.getModelEditorSource(modelData.getId());
@@ -493,7 +486,7 @@ System.out.println(modelNode.toString());
             // 处理异常
             if (bpmnModel.getMainProcess() == null) {
                 /*rs.failed("没有内容，不能导出");*/
-                return;
+                return new Response().fail("0","没有内容，不能导出");
             }
             String filename = "";
             byte[] exportBytes = null;
@@ -508,12 +501,12 @@ System.out.println(modelNode.toString());
                 filename = mainProcessId + ".json";
                 exportBytes = modelEditorSource;
             }
-            /*response.setContentType("application/octet-stream");
-            response.addHeader("Content-Disposition", "attachment;filename=" + filename);*/
+            response.setContentType("application/octet-stream");
             ByteArrayInputStream in = new ByteArrayInputStream(exportBytes);
             IOUtils.copy(in, response.getOutputStream());
             response.flushBuffer();
             in.close();
+            return  new Response().success("1","导出成功","导出成功");
             /*rs.successful("导出成功");*/
         }
         catch (Exception e) {
@@ -521,19 +514,19 @@ System.out.println(modelNode.toString());
             logger.error("导出model的xml文件失败：", e);
             /*rs.failed("导出失败");*/
         }
+        return null;
     }
 
     /**
      * 导入模型
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void modelImport(Map<String, Object> mapParams, Response rs) {
+    public Response modelImport(Map<String, Object> mapParams) {
         try {
             ByteArrayInputStream data = (ByteArrayInputStream) mapParams.get("data");
-            modelImportByInputStream(data,mapParams,rs);
+            return   modelImportByInputStream(data,mapParams);
         }catch (Exception e) {
             String errorMsg = e.getMessage().replace(System.getProperty("line.separator"), "<br/>");
             /*rs.failed(errorMsg);*/
@@ -545,14 +538,13 @@ System.out.println(modelNode.toString());
      * 导入模型
      *
      * @param mapParams
-     * @param rs
      */
     @Override
-    public void modelImportByLocalFile(Map<String, Object> mapParams, Response rs) {
+    public Response modelImportByLocalFile(Map<String, Object> mapParams) {
         try {
             InputStream is = new FileInputStream((String) mapParams.get("filename"));
             ByteArrayInputStream data = new ByteArrayInputStream(IOUtils.toByteArray(is));
-            modelImportByInputStream(data,mapParams,rs);
+           return   modelImportByInputStream(data,mapParams);
         }catch (Exception e) {
             String errorMsg = e.getMessage().replace(System.getProperty("line.separator"), "<br/>");
             /*rs.failed(errorMsg);*/
@@ -561,7 +553,7 @@ System.out.println(modelNode.toString());
     }
 
 
-    public void modelImportByInputStream(ByteArrayInputStream data, Map<String, Object> mapParams, Response rs) throws IOException, XMLStreamException {
+    public Response modelImportByInputStream(ByteArrayInputStream data, Map<String, Object> mapParams) throws IOException, XMLStreamException {
         InputStreamReader in = null;
         XMLStreamReader xtr = null;
         try {
@@ -575,10 +567,12 @@ System.out.println(modelNode.toString());
 
                 if (bpmnModel.getMainProcess() == null || bpmnModel.getMainProcess().getId() == null) {
                     /*rs.failed("process id 不能为空");*/
+                    return new Response().fail("0","process id 不能为空");
                 }
                 else {
                     if (bpmnModel.getLocationMap().isEmpty()) {
                         /*rs.failed("location map不能为空");*/
+                        return new Response().fail("0","location map不能为空");
                     }
                     else {
                         String processName = null;
@@ -605,6 +599,7 @@ System.out.println(modelNode.toString());
                                 editorNode.toString().getBytes("utf-8"));
                         Map resMap = new HashMap(2);
                         resMap.put(MID,modelData.getId());
+                        return  new Response().success("1","模型上传成功",resMap);
                         /*ResultUtil.makerSuccessResult(rs,"模型上传成功",resMap);*/
                     }
                 }
@@ -629,9 +624,11 @@ System.out.println(modelNode.toString());
                 repositoryService.addModelEditorSource(modelData.getId(), editorNode.toString().getBytes("utf-8"));
                 Map resMap = new HashMap(2);
                 resMap.put(MID,modelData.getId());
+                return  new Response().success("1","模型上传成功",resMap);
                 /*ResultUtil.makerSuccessResult(rs,"模型上传成功",resMap);*/
             }
             else {
+                return  new Response().fail("0","模型只支持[.bpmn20.xml]、[.bpmn]和[.json]后缀文件");
                 /*rs.failed("模型只支持[.bpmn20.xml]、[.bpmn]和[.json]后缀文件");*/
             }
         } finally {

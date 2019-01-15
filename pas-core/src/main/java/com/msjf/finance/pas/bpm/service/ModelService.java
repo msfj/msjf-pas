@@ -24,96 +24,83 @@ public interface ModelService {
      *
      *
      * @param mapParams
-     * @param rs
      */
-    public List<Model> modelListPage(Map<String, Object> mapParams, Response rs);
+    public Response modelListPage(Map<String, Object> mapParams);
 
     /**
      * 模型创建
      *
      * @param mapParams
-     * @param rs
      */
-    public void create(Map<String, Object> mapParams, Response rs);
+    public Response create(Map<String, Object> mapParams);
 
     /**
      * 流程复制
      *
      * @param mapParams
-     * @param rs
      */
-    public void copy(Map<String, Object> mapParams, Response rs);
+    public Response copy(Map<String, Object> mapParams);
 
     /**
      * 模型详情数据
      *
      * @param mapParams
-     * @param rs
      */
-    public void editorJson(Map<String, Object> mapParams, Response rs);
+    public Response editorJson(Map<String, Object> mapParams);
 
     /**
      * 保存模型
      *
      * @param mapParams
-     * @param rs
      */
-    public void saveModel(Map<String, Object> mapParams, Response rs);
+    public Response saveModel(Map<String, Object> mapParams);
 
     /**
      * 根据模型发布流程
      *
      * @param mapParams
-     * @param rs
      */
-    public void deploy(Map<String, Object> mapParams, Response rs);
+    public Response deploy(Map<String, Object> mapParams);
 
     /**
      * 删除模型
      *
      * @param mapParams
-     * @param rs
      */
-    public void delete(Map<String, Object> mapParams, Response rs);
+    public Response delete(Map<String, Object> mapParams);
 
     /**
      * 模型数据导出
      *
      * @param mapParams
-     * @param rs
      */
-    public void export(Map<String, Object> mapParams, Response rs);
+    public Response export(Map<String, Object> mapParams);
 
     /**
      * 模型的图片
      *
      * @param mapParams
-     * @param rs
      */
-    public void initImage(Map<String, Object> mapParams, Response rs);
+    public Response initImage(Map<String, Object> mapParams);
 
     /**
      * 模型数据导出为文件流
      *
      * @param mapParams
-     * @param rs
      */
-    public void export(ServletRequest request, ServletResponse response, Map<String, Object> mapParams,
-                       Response rs);
+    public Response export(ServletRequest request, ServletResponse response, Map<String, Object> mapParams);
 
     /**
      * 导入模型
      *
      * @param mapParams
-     * @param rs
      */
-    public void modelImport(Map<String, Object> mapParams, Response rs);
+    public Response modelImport(Map<String, Object> mapParams);
 
     /**
      * 导入模型
      *
      * @param mapParams
-     * @param rs
      */
-    public void modelImportByLocalFile(Map<String, Object> mapParams, Response rs);
+    public Response modelImportByLocalFile(Map<String, Object> mapParams);
 }

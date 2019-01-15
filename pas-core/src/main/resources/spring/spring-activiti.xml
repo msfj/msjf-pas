@@ -19,12 +19,24 @@
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
         <property name="dataSource" ref="dataSource"/>
         <property name="transactionManager" ref="transactionManager"/>
-        <property name="databaseSchemaUpdate" value="none"/>
-        <property name="jobExecutorActivate" value="false"/>
         <property name="databaseType" value="mysql" />
         <property name="activityFontName" value="宋体"/>
         <property name="labelFontName" value="宋体"/>
+        <property name="databaseSchemaUpdate" value="true"/>
+        <property name="dbIdentityUsed" value="false"/>
+        <property name="jobExecutorActivate" value="false"/>
+        <!-- <property name="databaseTablePrefix" value="kad."/> -->
+        <property name="history" value="full"/>
+        <property name="processDefinitionCacheLimit" value="10"/>
 
+        <property name="jpaHandleTransaction" value="false" />
+        <property name="jpaCloseEntityManager" value="false" />
+
+        <property name="eventListeners">
+            <list>
+                <ref bean="globalEventListener"/>
+            </list>
+        </property>
         <!-- 自定义MyBatis映射接口 -->
         <property name="customMybatisMappers">
             <set>

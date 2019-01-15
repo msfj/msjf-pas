@@ -1,9 +1,6 @@
 package com.msjf.finance.pas.bpm.service.activity;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.msjf.finance.pas.bpm.common.ParametersConstant;
+
 import com.msjf.finance.pas.bpm.dao.mapper.CustProStateDao;
 import com.msjf.finance.pas.bpm.dao.mapper.PasHisProcessinstanceDao;
 import com.msjf.finance.pas.bpm.dao.mapper.PasProTodoDao;
@@ -16,27 +13,18 @@ import com.msjf.finance.pas.common.response.Response;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.bpmn.model.UserTask;
 import org.activiti.engine.*;
-import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
-import org.activiti.engine.impl.persistence.entity.IdentityLinkEntity;
-import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static com.msjf.finance.pas.bpm.common.ParametersConstant.PDID;
-import static com.msjf.finance.pas.bpm.common.ParametersConstant.USER_ID;
-import static com.msjf.finance.pas.bpm.common.ParametersConstant.USER_IDS;
 import static com.msjf.finance.pas.common.VerificationUtil.valueOf;
 
 /**
@@ -44,10 +32,8 @@ import static com.msjf.finance.pas.common.VerificationUtil.valueOf;
  */
 
 @Service("publicTaskService")
-@Transactional(rollbackFor = Exception.class)
+@Transactional
 public class PublicTaskServiceImpl implements PublicTaskService {
-
-    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private RuntimeService runtimeService;
@@ -81,7 +67,7 @@ public class PublicTaskServiceImpl implements PublicTaskService {
 
 
     @Override
-    public void createFlow(Map<String, Object> mapParam, Response result) throws Exception {
+    public void createFlow(Map<String, Object> mapParam, Response result) throws RuntimeException {
         checkCreateFlowParam(mapParam, result);
         /*if(result.getCode().equals("0")){
             return;
@@ -94,6 +80,8 @@ public class PublicTaskServiceImpl implements PublicTaskService {
         String custNo = (String)mapParam.get("custNo");
         String userId =(String)mapParam.get("userId");
         String userName =(String)mapParam.get("userName");
+        String taskId =(String)mapParam.get("taskId");
+        Task task = taskService.createTaskQuery().includeProcessVariables().taskId(taskId).singleResult();
 
         //加入一些key以fp_前缀的K-V,流程引擎会保存
         mapParam.forEach((key,value)->{
@@ -101,7 +89,6 @@ public class PublicTaskServiceImpl implements PublicTaskService {
                 resultHashMap.put(key,value);
             }
         });
-        BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
         // 发起流程
         startFlow(mapParam, result);
 
@@ -295,7 +282,7 @@ public class PublicTaskServiceImpl implements PublicTaskService {
      */
     public Map<String, Object> commitFormData(
             Map<String, Object> mapParam,
-            Response result) throws Exception {
+            Response result) throws RuntimeException {
 
         HashMap<String, Object> formParamHashMap = new HashMap<>();
         formParamHashMap.put("koauth2EmployeeId", mapParam.get("koauth2EmployeeId"));
@@ -399,14 +386,13 @@ public class PublicTaskServiceImpl implements PublicTaskService {
 
 
     public void submitStartFormAndStartProcessInstance(Map<String, Object> mapParams, Response rs) {
-        String processDefinitionId = (String) mapParams.get(PDID);
-
-      /*  BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
+        String processDefinitionId =  (String)mapParams.get("processDefinitionId");
+        BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
         List<UserTask> userTaskList = WorkflowUtils.getOrderUserTask(bpmnModel);
 
         if(VerificationUtil.isEmpty(userTaskList)){
             throw new RuntimeException("流程模型异常，找不到第一个模型节点!");
-        }*/
+        }
       processInstanceService.submitStartFormAndStartProcessInstance(mapParams,rs);
 
     }

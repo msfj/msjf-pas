@@ -38,8 +38,7 @@ import static com.msjf.finance.pas.bpm.common.ParametersConstant.USER_IDS;
 /**
  * Created by Jsan on 2019/1/3.
  */
-@Service("ProcessInstanceService")
-@Transactional(rollbackFor = Exception.class)
+@Service("processInstanceService")
 public class ProcessInstanceServiceImpl implements ProcessInstanceService {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
