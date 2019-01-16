@@ -4,8 +4,7 @@ package com.msjf.finance.pas.bpm.service;
 
 import com.msjf.finance.msjf.core.response.Response;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+
 import java.util.Map;
 
 /**
@@ -88,7 +87,7 @@ public interface ModelService {
      *
      * @param mapParams
      */
-    public Response export(ServletRequest request, ServletResponse response, Map<String, Object> mapParams);
+    public Response export(String  request,Map<String, Object> mapParams);
 
     /**
      * 导入模型

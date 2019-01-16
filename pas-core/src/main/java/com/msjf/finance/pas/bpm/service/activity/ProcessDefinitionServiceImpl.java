@@ -92,7 +92,7 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 
 
     @Override
-    public void convertToModel(Map<String, Object> mapParams, Response rs) {
+    public Response convertToModel(Map<String, Object> mapParams) {
 
         String processDefinitionId = (String) mapParams.get("processDefinitionId");
         if (logger.isDebugEnabled()) {
@@ -102,8 +102,7 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
         ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
                 .processDefinitionId(processDefinitionId).singleResult();
         if (processDefinition == null) {
-            rs.fail("0","流程定义未找到");
-            return;
+            return new Response().fail("0","流程定义未找到");
         }
         InputStream bpmnStream = repositoryService.getResourceAsStream(processDefinition.getDeploymentId(),
                 processDefinition.getResourceName());
@@ -134,23 +133,18 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 
             repositoryService.addModelEditorSource(modelData.getId(), modelNode.toString().getBytes("utf-8"));
             JSONObject object = (JSONObject) JSON.toJSON(modelData);
-
-            /*rs.setResult(object);
-            rs.setResType(Constant.WS_TYPE_FASTJSONOBJECT);*/
-            rs.success("1","转换成功",object);
+            return new Response().success("1","转换成功",object);
         } catch (UnsupportedEncodingException e) {
             logger.error("UnsupportedEncodingException : {}", e);
-            rs.fail("0","转换出错，不支持的编码方式");
             throw new RuntimeException(e);
         } catch (XMLStreamException e) {
             logger.error("XMLStreamException : {}", e);
-            rs.fail("0","XML转换异常");
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void listProcessDefinitionByState(Map<String, Object> mapParams, Response rs) {
+    public Response listProcessDefinitionByState(Map<String, Object> mapParams) {
         String state = (String) mapParams.get("state");
         String lastVersion = String.valueOf(mapParams.get("lastVersion"));
 
@@ -191,13 +185,11 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
                 objects.add(object1);
             }
         }
-        /*rs.setResult(objects);
-        rs.setResType(Constant.WS_TYPE_FASTJSONARRAY);*/
-        rs.success("1","查询成功",objects);
+        return new Response().success("1","查询成功",objects);
     }
 
     @Override
-    public void listProcessDefinitionByStateAndPage(Map<String, Object> mapParams, Response rs) {
+    public Response listProcessDefinitionByStateAndPage(Map<String, Object> mapParams) {
         String state = (String) mapParams.get("state");
         int pageSize = (Integer) mapParams.get(PAGE_SIZE);
         int pageNumber = (Integer) mapParams.get(PAGE_NUMBER);
@@ -242,14 +234,11 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
                 objects.add(object1);
             }
         }
-
-        /*rs.setResult(objects);
-        rs.setResType(Constant.WS_TYPE_FASTJSONARRAY);*/
-        rs.success("1","查询成功",objects);
+        return  new Response().success("1","查询成功",objects);
     }
 
     @Override
-    public void listProcessDeploymentByState(Map<String, Object> mapParams, Response rs) {
+    public Response listProcessDeploymentByState(Map<String, Object> mapParams) {
         String processDefinitionId = (String) mapParams.get("processDefinitionId");
         String resourceType = (String) mapParams.get("type");
         if (logger.isDebugEnabled()) {
@@ -258,10 +247,9 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
         ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
                 .processDefinitionId(processDefinitionId).singleResult();
         if (processDefinition == null) {
-            rs.fail("0","找不到流程定义");
-            return;
+            return new Response().fail("0","找不到流程定义");
         }
-        getResource(processDefinition, resourceType, rs);
+        getResource(processDefinition, resourceType);
         if (resourceType.equals("image")) {
             Map modelMap = new HashMap(2);
             modelMap.put("name",processDefinition.getName());
@@ -274,22 +262,23 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 
                 if (editorSourceExtra != null) {
                     String base64Str = "data:image/png;base64," + Base64.encodeBase64String(editorSourceExtra);
-                    rs.success("1","获取成功",base64Str);
+                    return new Response().success("1","获取成功",base64Str);
                    /* rs.setResult(base64Str);
                     rs.setResType(Constant.WS_TYPE_STRING);*/
                 }
                 else {
-                    rs.fail("0","没有找到图片");
+                   return new Response().fail("0","没有找到图片");
                 }
             }else{
-                getResource(processDefinition, resourceType, rs);
+               return getResource(processDefinition, resourceType);
             }
         }else if (resourceType.equals("xml")) {
-            getResource(processDefinition, resourceType, rs);
+            return getResource(processDefinition, resourceType);
         }
+        return null;
     }
 
-    private void getResource(ProcessDefinition processDefinition, String resourceType, Response rs) {
+    private Response getResource(ProcessDefinition processDefinition, String resourceType) {
 
         String resourceName = "";
         StringBuilder base64Str = new StringBuilder();
@@ -307,20 +296,15 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
             resourceAsStream.read(data);
             base64Str.append(Base64.encodeBase64String(data));
 
-            rs.success("1","获取成功",base64Str);
-            /*rs.setResult(base64Str);
-            rs.setResType(Constant.WS_TYPE_STRING);*/
+            return new Response().success("1","获取成功",base64Str);
         } catch (IOException e) {
             logger.error("IOException", e);
-            rs.fail("0","转换出错");
-           /* rs.setResult("");
-            rs.setResType(Constant.WS_TYPE_STRING);*/
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void listProcessDeploymentByStateAndPage(Map<String, Object> mapParams, Response rs) {
+    public Response listProcessDeploymentByStateAndPage(Map<String, Object> mapParams) {
         final String state = (String) mapParams.get("state");
         final String lastVersion = String.valueOf(mapParams.get("lastVersion"));
         final int pageSize = (Integer) mapParams.get(PAGE_SIZE);
@@ -454,11 +438,11 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 
         /*rs.setResult(array);
         rs.setResType(Constant.WS_TYPE_FASTJSONARRAY);*/
-        rs.success("1","查询成功",array);
+        return new Response().success("1","查询成功",array);
     }
 
     @Override
-    public void resourceReadByProcessDefinitionId(Map<String, Object> mapParams, Response rs) throws Exception {
+    public Response resourceReadByProcessDefinitionId(Map<String, Object> mapParams) throws Exception {
         String processDefinitionId = (String) mapParams.get("processDefinitionId");
         String resourceType = (String) mapParams.get("type");
         if (logger.isDebugEnabled()) {
@@ -467,10 +451,9 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
         ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
                 .processDefinitionId(processDefinitionId).singleResult();
         if (processDefinition == null) {
-            rs.fail("0","找不到流程定义");
-            return;
+            return new Response().fail("0","找不到流程定义");
         }
-        getResource(processDefinition, resourceType, rs);
+        getResource(processDefinition, resourceType);
         if (resourceType.equals("image")) {
             Map modelMap = new HashMap(2);
             modelMap.put("name",processDefinition.getName());
@@ -483,23 +466,24 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 
                 if (editorSourceExtra != null) {
                     String base64Str = "data:image/png;base64," + Base64.encodeBase64String(editorSourceExtra);
-                    rs.success("1","获取成功",base64Str);
+                    return new Response().success("1","获取成功",base64Str);
                     /*rs.setResult(base64Str);
                     rs.setResType(Constant.WS_TYPE_STRING);*/
                 }
                 else {
-                    rs.fail("0","没有找到图片");
+                    return new Response().fail("0","没有找到图片");
                 }
             }else{
-                getResource(processDefinition, resourceType, rs);
+               return getResource(processDefinition, resourceType);
             }
         }else if (resourceType.equals("xml")) {
-            getResource(processDefinition, resourceType, rs);
+            return getResource(processDefinition, resourceType);
         }
+        return null;
     }
 
     @Override
-    public void findStartForm(Map<String, Object> mapParams, Response rs) {
+    public Response findStartForm(Map<String, Object> mapParams) {
         String processDefinitionId = (String) mapParams.get("processDefinitionId");
         if (logger.isDebugEnabled()) {
             logger.debug("findStartForm, processDefinitionId=>{}", processDefinitionId);
@@ -531,29 +515,29 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
                         logger.debug("Form property : {}", object.toJSONString());
                     }
                 }
-                rs.success("1","获取表单成功",array);
+                return new Response().success("1","获取表单成功",array);
                 /*rs.setResult(array);
                 rs.setLengths(array.size());
                 rs.setResType(Constant.WS_TYPE_FASTJSONARRAY);
                 rs.successful("获取表单成功");*/
             } else {
-                rs.success("无表单数据");
+                return new Response().success("无表单数据");
             }
         } catch (ActivitiObjectNotFoundException e) {
             if (logger.isWarnEnabled()) {
                 logger.warn("Activiti object not found exception : processDefinitionId = > {}", processDefinitionId);
             }
-            rs.fail("0","流程定义不存在");
+            return new Response().fail("0","流程定义不存在");
         } catch (ActivitiException e) {
             if (logger.isWarnEnabled()) {
                 logger.warn("Activiti exception : processDefinitionId = > {}", processDefinitionId);
             }
-            rs.fail("0","没有配置表单");
+            return new Response().fail("0","没有配置表单");
         }
     }
 
     @Override
-    public void findProcessDefinitionDetails(Map<String, Object> mapParams, Response rs) {
+    public Response findProcessDefinitionDetails(Map<String, Object> mapParams) {
         String processDefinitionId = (String) mapParams.get("processDefinitionId");
 
         ProcessDefinitionEntity processDefinition = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService)
@@ -626,14 +610,14 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 
             /*rs.setResult(object);
             rs.setResType(Constant.WS_TYPE_FASTJSONOBJECT);*/
-            rs.success("1","查询成功",object);
+            return new Response().success("1","查询成功",object);
         } else {
-            rs.fail("0","没有找到流程定义");
+            return new Response().fail("0","没有找到流程定义");
         }
     }
 
     @Override
-    public void findStartUserActivities(Map<String, Object> mapParams, Response rs) {
+    public Response findStartUserActivities(Map<String, Object> mapParams) {
         String processDefinitionId = (String) mapParams.get(PDID);
         String conditionValue = (String) mapParams.get("conditionValue");
         String conditionVariable = (String) mapParams.get("conditionVariable");
@@ -643,12 +627,10 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
             def = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService)
                     .getDeployedProcessDefinition(processDefinitionId);
         } catch (ActivitiObjectNotFoundException e) {
-            rs.fail("0","流程不存在");
-            return;
+            return new Response().fail("0","流程不存在");
         }
         if (def == null) {
-            rs.fail("0","流程不存在");
-            return;
+            return new Response().fail("0","流程不存在");
         }
         ActivityImpl initial = def.getInitial();
 
@@ -661,21 +643,21 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
         List<PvmTransition> transitions = initial.getOutgoingTransitions();
         JSONArray array = kbpmTaskService.nextTaskDefinition(transitions, map);
 
-        rs.success("1","获取成功",array);
+        return new Response().success("1","获取成功",array);
        /* rs.setResult(array);
         rs.setLengths(array.size());
         rs.setResType(Constant.WS_TYPE_FASTJSONARRAY);*/
     }
 
     @Override
-    public void delete(Map<String, Object> mapParams, Response rs) {
+    public Response delete(Map<String, Object> mapParams) {
         String deploymentId = (String) mapParams.get("deploymentId");
         boolean ensure = (Boolean) mapParams.get("ensure");
 
         try {
             if (ensure) {
                 repositoryService.deleteDeployment(deploymentId, true);
-                rs.success("删除成功!");
+                return new Response().success("1","删除成功!","删除成功!");
             } else {
                 List<ProcessDefinition> processDefinitions = repositoryService.createProcessDefinitionQuery()
                         .deploymentId(deploymentId).list();
@@ -687,22 +669,21 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
                 }
 
                 if (nrOfProcessInstances == 0) {
-                    rs.fail("0","确定要删除该部署流程吗？");
+                    return new Response().fail("0","确定要删除该部署流程吗？");
                 } else {
-                    rs.fail("0",String.format("该流程部署包含 %d 个未结束任务，确定要删除该部署流程吗？", nrOfProcessInstances));
+                   return new Response().fail("0",String.format("该流程部署包含 %d 个未结束任务，确定要删除该部署流程吗？", nrOfProcessInstances));
 
                 }
             }
         } catch (Exception e) {
             logger.error("Activiti exception : deploymentId = > {}", deploymentId);
             logger.error("Activiti exception : ", e);
-            rs.fail("0","删除失败");
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void findProcessDefinitionDetail(Map<String, Object> mapParams, Response rs) {
+    public Response findProcessDefinitionDetail(Map<String, Object> mapParams) {
         String processDefinitionId = (String) mapParams.get("processDefinitionId");
         BpmnModel model = repositoryService.getBpmnModel(processDefinitionId);
         List<Map<String,Object>> modelList = new ArrayList<>();
@@ -716,16 +697,15 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
                     modelList.add(modelMap);
                 }
             }
-            rs.success("1","查询流程信息成功",modelList);
+            return new Response().success("1","查询流程信息成功",modelList);
             /*ResultUtil.makerSusResults("查询流程信息成功!", modelList, rs);*/
         }else{
-            rs.fail("0","当前流程信息不存在");
-            return;
+            return new Response().fail("0","当前流程信息不存在");
         }
     }
 
     @Override
-    public void getDiagram(Map<String, Object> mapParams, Response rs) {
+    public Response getDiagram(Map<String, Object> mapParams) {
         String processDefinitionId = (String) mapParams.get("processDefinitionId");
         String processInstanceId = (String) mapParams.get("processInstanceId");
 
@@ -885,10 +865,11 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
         responseJSON.put("activities", activityArray);
         responseJSON.put("sequenceFlows", sequenceFlowArray);
         System.out.println(responseJSON.toString());
+        return new Response().success("1","查询成功",responseJSON);
     }
 
     @Override
-    public void getHighlighted(Map<String, Object> mapParams, Response rs) {
+    public Response getHighlighted(Map<String, Object> mapParams) {
         long start = System.currentTimeMillis();
         String processInstanceId = (String) mapParams.get("processInstanceId");
         ObjectMapper objectMapper = new ObjectMapper();
@@ -948,7 +929,7 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
         long end = System.currentTimeMillis();
         frameJSON.put("timespent", end - start);
 
-        rs.success("1","获取成功",frameJSON);
+        return new Response().success("1","获取成功",frameJSON);
         /*rs.setResult(frameJSON);
         rs.setResType(Constant.WS_TYPE_JSON);*/
     }

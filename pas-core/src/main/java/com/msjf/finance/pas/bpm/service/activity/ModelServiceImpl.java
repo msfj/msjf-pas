@@ -36,8 +36,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -467,14 +465,14 @@ public class ModelServiceImpl implements ModelService {
      * @param mapParams
      */
     @Override
-    public Response export(ServletRequest request, ServletResponse response, Map<String, Object> mapParams) {
-        String modelId = (String) mapParams.get(MID);
+    public Response export(String s,Map<String, Object> mapParams) {
+       /* String modelId = (String) mapParams.get(MID);
         String type = (String) mapParams.get("type");
 
         try {
             Model modelData = repositoryService.getModel(modelId);
             if (modelData == null) {
-               /* rs.failed("模型不存在");*/
+               *//* rs.failed("模型不存在");*//*
                 return new Response().fail("0","模型不存在");
             }
             BpmnJsonConverter jsonConverter = new BpmnJsonConverter();
@@ -485,7 +483,7 @@ public class ModelServiceImpl implements ModelService {
 
             // 处理异常
             if (bpmnModel.getMainProcess() == null) {
-                /*rs.failed("没有内容，不能导出");*/
+                *//*rs.failed("没有内容，不能导出");*//*
                 return new Response().fail("0","没有内容，不能导出");
             }
             String filename = "";
@@ -507,13 +505,13 @@ public class ModelServiceImpl implements ModelService {
             response.flushBuffer();
             in.close();
             return  new Response().success("1","导出成功","导出成功");
-            /*rs.successful("导出成功");*/
+            *//*rs.successful("导出成功");*//*
         }
         catch (Exception e) {
             logger.error("导出model的xml文件失败：modelId={}, type={}", modelId, type);
             logger.error("导出model的xml文件失败：", e);
-            /*rs.failed("导出失败");*/
-        }
+            *//*rs.failed("导出失败");*//*
+        }*/
         return null;
     }
 

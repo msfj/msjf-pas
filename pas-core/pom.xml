@@ -25,7 +25,6 @@
         <java_source_version>1.8</java_source_version>
         <java_target_version>1.8</java_target_version>
         <file_encoding>UTF-8</file_encoding>
-        <servlet-api.version>2.5</servlet-api.version>
     </properties>
 
     <dependencies>
@@ -131,7 +130,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.38</version>
+            <version>5.1.28</version>
         </dependency>
         <dependency>
             <groupId>commons-pool</groupId>
@@ -206,12 +205,6 @@
             <version>1.1.7</version>
         </dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>${servlet-api.version}</version>
-            <scope>provided</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.logback-extensions</groupId>

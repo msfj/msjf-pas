@@ -351,7 +351,7 @@ public class PublicTaskServiceImpl implements PublicTaskService {
             // 查询流程编号
             String processUUID = (String)mapParam.get("processDefinitionId");
             paramHashMap.put("processDefinitionId", processUUID);
-            processDefinitionService.findStartForm(paramHashMap,result);
+            result = processDefinitionService.findStartForm(paramHashMap);
 
             startFlowParamList = (List<Map<String, Object>>)result.getData();
             result.success("1","获取发起流程表单成功!",startFlowParamList);

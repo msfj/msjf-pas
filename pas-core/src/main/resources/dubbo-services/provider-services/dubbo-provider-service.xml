@@ -12,5 +12,9 @@
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.SaveModelFacade" ref="saveModelFacade" />
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.DeployFacade" ref="deployFacade" />
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.ModelDeleteFacade" ref="modelDeleteFacade" />
-
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.ModelInitImageFacade" ref="modelInitImageFacade" />
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.ProcessDeploymentListFacade" ref="processDeploymentListFacade" />
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.GetDiagramFacade" ref="getDiagramFacade" />
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.ConvertToModelFacade" ref="convertToModelFacade" />
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.GetHighlightedFacade" ref="getHighlightedFacade" />
 </beans>
