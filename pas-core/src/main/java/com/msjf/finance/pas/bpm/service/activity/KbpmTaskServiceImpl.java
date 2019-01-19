@@ -7,6 +7,8 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
 import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.bpm.common.ParametersConstant;
+import com.msjf.finance.pas.bpm.dao.mapper.PasHisProcessinstanceDao;
+import com.msjf.finance.pas.bpm.dao.mapper.PasProTodoDao;
 import com.msjf.finance.pas.bpm.service.KbpmTaskService;
 import com.msjf.finance.pas.common.StringUtil;
 import com.msjf.finance.pas.common.WorkflowUtils;
@@ -34,12 +36,15 @@ import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 import static com.msjf.finance.pas.bpm.common.ParametersConstant.*;
@@ -48,6 +53,7 @@ import static com.msjf.finance.pas.bpm.common.ParametersConstant.*;
  * Created by chengjunping on 2018/12/27.
  */
 @Service("kbpmTaskServiceImpl")
+@Transactional
 public class KbpmTaskServiceImpl implements KbpmTaskService{
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
@@ -70,8 +76,11 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
     @Autowired
     private RepositoryService repositoryService;
 
-    /*@Autowired
-    private BexCommandExecutor commandExecutor;*/
+    @Resource
+    PasProTodoDao proTodoDao;
+
+    @Resource
+    PasHisProcessinstanceDao hisProcessinstanceDao;
 
     @Override
     public void claim(Map<String, Object> mapParams, Response rs) {
@@ -222,12 +231,14 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
      * @throws RuntimeException
      */
     public void submitTaskFormDataForMultiInstance(Activity activity,Task task,Map<String, Object> mapParams, Response rs) {
-
+        String processInstanceId = task.getProcessInstanceId();
         Object userIds = mapParams.get(USER_IDS);
+        String userId = (String) mapParams.get(USER_ID);
         String taskId = (String) mapParams.get(TASK_ID);
         Map<String, Object> variables = new HashMap<String, Object>();
         String currentTaskDefinitionKey = task.getTaskDefinitionKey(); //保存当前任务对于的节点id
         String comment = (String) mapParams.get("comment");
+        String lastActId = (String) mapParams.get("fp_lastStep");
 
         // 所有以fp_开始的参数都复制到formPraperties中，用于保存到用户任务中
         mapParams.forEach((key,value) -> {
@@ -254,24 +265,21 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
             //统计节点用户同意计数
             setAndAddUserTaskApproveCount(task,mapParams);
 
-            //WorkflowUtils.setMultiInstanceCommonVariable(activity,variables);
+            WorkflowUtils.setMultiInstanceCommonVariable(activity,variables);
             // 提交审核
             taskService.complete(taskId,variables);
+            Map<String,Object> deltaskMap = new HashMap<>();
+            deltaskMap.put("proInstance",processInstanceId);
+            deltaskMap.put("actId",lastActId);
+            deltaskMap.put("taskId",taskId);
+            deltaskMap.put("userId",userId);
+            delTodo(deltaskMap);
 
             if(isProcessInstanceFinish(task.getProcessInstanceId())){
                 processInstanceFinishExecEndBex(true,task.getProcessInstanceId(),task,rs);
-                /*SetProcessInstStepServices setProcessInstStepServices = (SetProcessInstStepServices) SpringContextHelper.getBean("setProcessInstStepServices");
-                HashMap<String,Object> taskMap = new HashMap<String,Object>();
-                taskMap.put("processUUID",task.getProcessDefinitionId());
-                taskMap.put("processINST",task.getProcessInstanceId());
-                taskMap.put("stepId",task.getTaskDefinitionKey());
-                taskMap.put("stepName",task.getName());
-                taskMap.put("procInstStatus","1");
-                taskMap.put("auditorsTodo",task.getAssignee());
-                setProcessInstStepServices.doBusiness(taskMap,rs);
-                if(!rs.isSuccessful()){
-                    throw new WsRollbackRuntimeException("业务流程实例表更新数据失败!");
-                }*/
+                Map<String,Object> delMap = new HashMap<>();
+                delMap.put("proInstance",task.getProcessInstanceId());
+                delTodo(delMap);
                 setProcessInstanceStatusValue(true,
                         true,"审核成功，流程结束!",rs);
             }else {
@@ -286,6 +294,39 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
                        /* Map delMap = new HashMap(2);
                         delMap.put("procinstId",task.getProcessInstanceId());
                         DaoUtil.commonPersistance.delete("act_ru_VARIABLE_delByProcinstId",delMap);*/
+                        if(!nextTasks.get(0).getTaskDefinitionKey().equals(lastActId)){
+                            List<Map> todoList = new ArrayList<>();
+                            Map<String,Object> userMap = new HashMap<>();
+                            userMap.put("processInstanceId",processInstanceId);
+                            List<Map> userList = hisProcessinstanceDao.getTaskUsersByProcInsId(userMap);
+                            if(ObjectUtils.isEmpty(userList)){
+                                rs.fail("0","待审核人列表为空！");
+                                throw new RuntimeException("待审核人列表为空！");
+                            }
+                            Map<String,Object> delMap = new HashMap<>();
+                            delMap.put("proInstance",processInstanceId);
+                            delMap.put("actId",lastActId);
+                            delTodo(delMap);
+                            for(int i=0;i<userList.size();i++){
+                                Map<String,Object> taskMap = new HashMap<>();
+                                String[] assignees = userList.get(i).get("userId").toString().split("\\|");
+                                String assigeneeid = assignees[0];
+                                String assigeneeName = assignees[1];
+                                taskMap.put("proInstance",processInstanceId);
+                                taskMap.put("actId",userList.get(i).get("taskDefinitionKey"));
+                                taskMap.put("actName",userList.get(i).get("actName"));
+                                taskMap.put("proDefKey",userList.get(i).get("proDefKey"));
+                                BpmnModel bpmnModel = repositoryService.getBpmnModel(userList.get(i).get("proDefKey").toString());
+                                taskMap.put("proDefName",bpmnModel.getProcesses().get(0).getName());
+                                taskMap.put("auditorId",assigeneeid);
+                                taskMap.put("auditorName",assigeneeName);
+                                taskMap.put("taskId",userList.get(i).get("id"));
+                                todoList.add(taskMap);
+                            }
+                            Map<String,Object> todoMap = new HashMap<>();
+                            todoMap.put("list",todoList);
+                            addTodo(todoMap);
+                        }
                         setProcessInstanceStatusValue(true,
                                 false,"跳转下一步成功!",rs);
                     }else {
@@ -316,11 +357,6 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
      */
     private void setProcessInstanceStatusValue(boolean subTaskComplete
             ,boolean processInstanceComplete,String errorMessage,Response rs){
-
-        //失败则返回
-        if(!rs.getFlag().equals("1")){
-            return;
-        }
 
         Map retMap = new HashMap(2);
         if(subTaskComplete){
@@ -463,7 +499,6 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
             rs.fail("0","没有找到对应的任务信息!");
             return;
         }
-
         BpmnModel bpmnModel = repositoryService.getBpmnModel(task.getProcessDefinitionId());
         Activity activity = (Activity) bpmnModel.getFlowElement(task.getTaskDefinitionKey());
 
@@ -480,6 +515,7 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
         String taskId = (String) mapParams.get(TASK_ID);
         Map<String, Object> variables = new HashMap<String, Object>();
         String comment = (String) mapParams.get("comment");
+        String lastActId = (String) mapParams.get("fp_lastStep");
 
         // 所有以fp_开始的参数都复制到formPraperties中，用于保存到用户任务中
         mapParams.forEach((key,value) -> {
@@ -513,22 +549,19 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
             // 提交审核
             taskService.complete(taskId, variables);
 
+            Map<String,Object> deltaskMap = new HashMap<>();
+            deltaskMap.put("proInstance",processInstanceId);
+            deltaskMap.put("actId",lastActId);
+            deltaskMap.put("taskId",taskId);
+            deltaskMap.put("userId",userId);
+            delTodo(deltaskMap);
+
             // 如果execution为空，则表示流程结束
             if (isProcessInstanceFinish(processInstanceId)) {
                 processInstanceFinishExecEndBex(false,processInstanceId,task,rs);
-               /* SetProcessInstStepServices setProcessInstStepServices = (SetProcessInstStepServices) SpringContextHelper.getBean("setProcessInstStepServices");
-                HashMap<String,Object> taskMap = new HashMap<String,Object>();
-                taskMap.put("processUUID",task.getProcessDefinitionId());
-                taskMap.put("processINST",processInstanceId);
-                taskMap.put("stepId",task.getTaskDefinitionKey());
-                taskMap.put("stepName",task.getName());
-                taskMap.put("procInstStatus","1");
-                taskMap.put("stepType","finish");
-                taskMap.put("customParam",mapParams.get("fp_customParam"));
-                setProcessInstStepServices.doBusiness(taskMap,rs);
-                if(!rs.isSuccessful()){
-                    throw new WsRollbackRuntimeException("业务流程实例表更新数据失败!");
-                }*/
+                Map<String,Object> delMap = new HashMap<>();
+                delMap.put("proInstance",processInstanceId);
+                delTodo(delMap);
                 setProcessInstanceStatusValue(true,
                         true,"审核成功，流程结束!",rs);
 
@@ -545,6 +578,42 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
                 /*Map delMap = new HashMap(2);
                 delMap.put("procinstId",processInstanceId);
                 DaoUtil.commonPersistance.delete("act_ru_VARIABLE_delByProcinstId",delMap);*/
+                List<Task> nextTasks = taskService.createTaskQuery().processInstanceId(processInstanceId).list();
+                if(!nextTasks.get(0).getTaskDefinitionKey().equals(lastActId)){
+                    List<Map> todoList = new ArrayList<>();
+                    Map<String,Object> userMap = new HashMap<>();
+                    userMap.put("processInstanceId",processInstanceId);
+                    List<Map> userList = hisProcessinstanceDao.getTaskUsersByProcInsId(userMap);
+                    if(ObjectUtils.isEmpty(userList)){
+                        rs.fail("0","待审核人列表为空！");
+                        throw new RuntimeException("待审核人列表为空！");
+                    }
+                    Map<String,Object> delMap = new HashMap<>();
+                    delMap.put("proInstance",processInstanceId);
+                    delMap.put("actId",lastActId);
+                    delTodo(delMap);
+                    for(int i=0;i<userList.size();i++){
+                        Map<String,Object> taskMap = new HashMap<>();
+                        String[] assignees = userList.get(i).get("userId").toString().split("\\|");
+                        String assigeneeid = assignees[0];
+                        String assigeneeName = assignees[1];
+                        taskMap.put("proInstance",processInstanceId);
+                        taskMap.put("actId",userList.get(i).get("taskDefinitionKey"));
+                        taskMap.put("actName",userList.get(i).get("actName"));
+                        taskMap.put("proDefKey",userList.get(i).get("proDefKey"));
+                        BpmnModel bpmnModel = repositoryService.getBpmnModel(userList.get(i).get("proDefKey").toString());
+                        taskMap.put("proDefName",bpmnModel.getProcesses().get(0).getName());
+                        taskMap.put("auditorId",assigeneeid);
+                        taskMap.put("auditorName",assigeneeName);
+                        taskMap.put("taskId",userList.get(i).get("id"));
+                        todoList.add(taskMap);
+                    }
+                    Map<String,Object> todoMap = new HashMap<>();
+                    todoMap.put("list",todoList);
+                    addTodo(todoMap);
+                }
+
+
                 setProcessInstanceStatusValue(true,
                         false,"跳转下一步成功!",rs);
             }
@@ -562,6 +631,38 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
 
 
     /**
+     * 增加到审核人表
+     *
+     * @param mapParam
+     *
+     */
+    public void addTodo(Map<String, Object> mapParam) {
+        try {
+            proTodoDao.addPasProTodoList(mapParam);
+        }catch (Exception e){
+            //打印错误日志
+            e.printStackTrace();
+            throw new RuntimeException("更新表失败");
+        }
+    }
+
+    /**
+     * 删除审核人表
+     *
+     * @param mapParam
+     *
+     */
+    public void delTodo(Map<String, Object> mapParam) {
+        try {
+            proTodoDao.delPasProTodoList(mapParam);
+        }catch (Exception e){
+            //打印错误日志
+            e.printStackTrace();
+            throw new RuntimeException("删除表失败");
+        }
+    }
+
+    /**
      * 设置和增加当前审核节点同意计数
      * @param task
      * @param mapParam
@@ -571,7 +672,13 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
         if (StringUtil.isNull(approveStr)) {
             return;
         }
-        int approve = Integer.parseInt(approveStr);
+        int approve = 0;
+        if(NumberUtils.isNumber(approveStr)){
+            approve = Integer.parseInt(approveStr);
+        }else{
+            approve = 1;
+        }
+
 
         String taskApproveKey = "_" + task.getTaskDefinitionKey() + "_agreeOfcnt";
         VariableInstance taskApproveValue = runtimeService.getVariableInstance(task.getExecutionId(),taskApproveKey);

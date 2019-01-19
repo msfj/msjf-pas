@@ -2,6 +2,7 @@ package com.msjf.finance.pas.bpm.listener;
 
 
 import com.msjf.finance.pas.bpm.service.EventHandler;
+import com.msjf.finance.pas.common.SpringContextHelper;
 import org.activiti.engine.delegate.event.ActivitiEvent;
 import org.activiti.engine.delegate.event.ActivitiEventListener;
 import org.apache.commons.logging.Log;
@@ -35,8 +36,7 @@ public class GlobalEventListener implements ActivitiEventListener {
       //根据事件的类型ID,找到对应的事件处理器
       String eventHandlerBeanId = handlers.get(eventType);
       if(eventHandlerBeanId!=null){
-          ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-         EventHandler handler=(EventHandler) ctx.getBean(eventHandlerBeanId);
+         EventHandler handler=(EventHandler) SpringContextHelper.getBean(eventHandlerBeanId);
          handler.handle(event);
       }
     }

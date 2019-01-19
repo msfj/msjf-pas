@@ -119,4 +119,29 @@
         order by t.end_time desc
     </select>
 
+
+    <delete id="varDelByProcinstId"
+            parameterType="java.util.HashMap">
+        <![CDATA[
+			delete from ACT_RU_VARIABLE t where
+			 t.proc_inst_id_=#{procinstId} and t.name_ like '%sid%'
+		]]>
+    </delete>
+
+
+
+    <select id="getTaskUsersByProcInsId" parameterType="java.util.HashMap"
+            resultType="java.util.LinkedHashMap">
+        SELECT t.id_ "id",
+        t.proc_inst_id_ "processInstanceId",
+        t.task_def_key_ "taskDefinitionKey",
+        t.`PROC_DEF_ID_` "proDefKey",
+        CONCAT_WS(',',t.assignee_,t1.user_id_) "userId",
+        t.`NAME_` "actName"
+        FROM kbpm2.act_ru_task t
+        LEFT JOIN kbpm2.act_ru_identitylink t1 ON t1.task_id_=t.`ID_` AND t1.type_ ='candidate'
+        where  t.proc_inst_id_ = #{processInstanceId}
+    </select>
+
+
 </mapper>

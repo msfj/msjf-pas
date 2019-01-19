@@ -15,17 +15,15 @@ public interface PublicTaskService {
     /**
      * 发起流程
      * @param mapParam
-     * @param result
      */
-    public void createFlow(Map<String, Object> mapParam, Response result) throws Exception;
+    public Response createFlow(Map<String, Object> mapParam) throws RuntimeException;
 
 
     /**
      * 跳转下一节点
      * @param mapParam
-     * @param rs
      * @throws RuntimeException
      */
-    public void executeNextStep(HashMap<String, Object> mapParam, Response rs) throws Exception;
+    public Response executeNextStep(Map<String, Object> mapParam) throws Exception;
 
 }

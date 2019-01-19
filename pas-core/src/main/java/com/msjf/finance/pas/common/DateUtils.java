@@ -18,7 +18,7 @@ public class DateUtils {
 
     public final static String DATE_FMT_TIME = "HHmmss";
 
-    public final static String DATE_FMT_DATETIME = "yyyyMMddHHmmss";
+    public final static String DATE_FMT_DATETIME = "yyyy-MM-dd HH:mm:ss";
 
 
     private static String[] parsePatterns = {"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM",
@@ -48,7 +48,7 @@ public class DateUtils {
         if (pattern != null && pattern.length > 0) {
             formatDate = DateFormatUtils.format(date, pattern[0].toString());
         } else {
-            formatDate = DateFormatUtils.format(date, "yyyy-MM-dd");
+            formatDate = DateFormatUtils.format(date, DATE_FMT_DATETIME);
         }
         return formatDate;
     }

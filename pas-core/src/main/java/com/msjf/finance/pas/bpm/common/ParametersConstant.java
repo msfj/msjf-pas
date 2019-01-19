@@ -5,7 +5,7 @@ package com.msjf.finance.pas.bpm.common;
  */
 public class ParametersConstant {
 
-    public final static String USER_ID = "wsuser";
+    public final static String USER_ID = "userId";
 
     public final static String USER_IDS = "userIds";
 

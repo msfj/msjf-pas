@@ -41,10 +41,12 @@
     </insert>
 
     <delete id="delPasProTodoList" parameterType="java.util.Map"  >
-        delete from  pas_pro_todo t
+        delete from  pas_pro_todo
         <where>
-            <if test=" proInstance != null and proInstance !='' "><![CDATA[ and t.pro_instance=#{proInstance}   ]]></if>
-            <if test=" actId != null and actId !='' "><![CDATA[ and t.act_id=#{actId} ]]></if>
+            <if test=" proInstance != null and proInstance !='' "><![CDATA[ and pro_instance=#{proInstance}   ]]></if>
+            <if test=" actId != null and actId !='' "><![CDATA[ and act_id=#{actId} ]]></if>
+            <if test=" userId != null and userId !='' "><![CDATA[ and auditor_id=#{userId} ]]></if>
+            <if test=" taskId != null and taskId !='' "><![CDATA[ and task_id=#{taskId} ]]></if>
         </where>
     </delete>
 

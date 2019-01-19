@@ -15,4 +15,8 @@ public interface PasHisProcessinstanceDao {
     List<PasHisProcessinstanceEntity> queryPasHisProcessinstance(Map<String, Object> mapParams);
 
     void addPasHisProcessinstance(Map<String, Object> mapParams);
+
+    void varDelByProcinstId(Map<String, Object> mapParams);
+
+    List<Map> getTaskUsersByProcInsId (Map<String, Object> mapParams);
 }

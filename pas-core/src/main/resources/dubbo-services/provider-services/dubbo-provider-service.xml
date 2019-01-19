@@ -16,5 +16,6 @@
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.ProcessDeploymentListFacade" ref="processDeploymentListFacade" />
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.GetDiagramFacade" ref="getDiagramFacade" />
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.ConvertToModelFacade" ref="convertToModelFacade" />
-	<dubbo:service interface="com.msjf.finance.pas.facade.act.GetHighlightedFacade" ref="getHighlightedFacade" />
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.CreateFlowFacade" ref="createFlowFacade" />
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.ExcuteFlowFacade" ref="excuteFlowFacade" />
 </beans>
