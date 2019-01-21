@@ -18,4 +18,6 @@
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.ConvertToModelFacade" ref="convertToModelFacade" />
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.CreateFlowFacade" ref="createFlowFacade" />
 	<dubbo:service interface="com.msjf.finance.pas.facade.act.ExcuteFlowFacade" ref="excuteFlowFacade" />
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.PasHisFacade" ref="pasHisFacade" />
+	<dubbo:service interface="com.msjf.finance.pas.facade.act.TodoFacade" ref="todoFacade" />
 </beans>

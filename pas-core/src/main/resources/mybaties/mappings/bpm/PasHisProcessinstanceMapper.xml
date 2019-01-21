@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="GBK" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.msjf.finance.pas.bpm.dao.mapper.PasHisProcessinstanceDao">
-
+<!--
     <resultMap id="BaseResultMap" type="com.msjf.finance.pas.bpm.entity.PasHisProcessinstanceEntity" >
         <result column="id" property="Id" jdbcType="VARCHAR" />
         <result column="cust_name" property="custName" jdbcType="VARCHAR" />
@@ -20,7 +20,7 @@
         <result column="audit_result" property="auditResult" jdbcType="VARCHAR" />
         <result column="message_text" property="messageText" jdbcType="VARCHAR" />
         <result column="file_urls" property="fileUrls" jdbcType="VARCHAR" />
-    </resultMap>
+    </resultMap>-->
 
 
     <insert id="addPasHisProcessinstance" parameterType="java.util.Map"  >
@@ -111,12 +111,13 @@
             <if test=" custName != null and custName != '' "> and t.cust_name=#{custName} </if>
             <if test=" custNo != null and custNo != '' "> and t.cust_no=#{custNo} </if>
             <if test=" proDefKey != null and proDefKey != '' "> and t.pro_def_key=#{proDefKey} </if>
-            <if test=" proDefName != null and proDefName != '' "> and t.pro_def_name=#{proDefName} </if>
+            <if test=" proDefName != null and proDefName != '' "> and t.pro_def_name like concat(concat('%', #{proDefName}),'%') </if>
             <if test=" startTime != null and startTime != '' "> and t.start_time >=#{startTime} </if>
             <if test=" endTime != null and endTime != '' "> <![CDATA[and t.end_time <=#{endTime} ]]></if>
             <if test=" auditorId != null and auditorId != '' "> and t.auditor_id=#{auditorId} </if>
         </where>
         order by t.end_time desc
+        <if test=" pageSize != null and pageSize != '' ">limit #{currIndex} , #{pageSize} </if>
     </select>
 
 
