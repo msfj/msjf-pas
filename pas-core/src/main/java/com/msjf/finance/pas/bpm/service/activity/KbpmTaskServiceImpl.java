@@ -52,7 +52,7 @@ import static com.msjf.finance.pas.bpm.common.ParametersConstant.*;
 /**
  * Created by chengjunping on 2018/12/27.
  */
-@Service("kbpmTaskServiceImpl")
+@Service("kbpmTaskService")
 @Transactional
 public class KbpmTaskServiceImpl implements KbpmTaskService{
 
@@ -1133,6 +1133,69 @@ public class KbpmTaskServiceImpl implements KbpmTaskService{
         rs.setResult(array);
         rs.setLengths(array.size());
         rs.setResType(Constant.WS_TYPE_FASTJSONARRAY);*/
+    }
+
+    @Override
+    public Response getAllNextTask(Map<String, Object> mapParams) {
+        String taskId = (String) mapParams.get(TASK_ID);
+        Task cuurentTask = taskService.createTaskQuery().taskId(taskId).singleResult();
+
+        if (cuurentTask == null) {
+            return new Response().fail("0","当前任务不存在");
+
+        }
+        Map<String, Object> map = this.getVariables(cuurentTask.getProcessInstanceId());
+        // 1.获取流程定义
+        ProcessDefinitionEntity def = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService)
+                .getDeployedProcessDefinition(cuurentTask.getProcessDefinitionId());
+        String executionId = cuurentTask.getExecutionId();
+        // 2.获取流程实例
+        ExecutionEntity execution = (ExecutionEntity) runtimeService.createExecutionQuery().executionId(executionId)
+                .singleResult();
+        // 3.通过流程实例查找当前活动的ID
+        String activityId = execution.getActivityId();
+        // 4.通过活动的ID在流程定义中找到对应的活动对象
+        ActivityImpl activity = def.findActivity(activityId);
+        if (logger.isDebugEnabled()) {
+            logger.debug("Current task : ", activity.getProperty("name"));
+        }
+        // 5.通过活动对象找当前活动的所有出口
+        List<PvmTransition> transitions = activity.getOutgoingTransitions();
+
+        List<Map<String,Object>> list = new ArrayList<>();
+        if (transitions != null) {
+            for (PvmTransition trans : transitions) {
+                PvmActivity ac = trans.getDestination();
+                String activityType = (String) ac.getProperty("type");
+                if (logger.isDebugEnabled()) {
+                    logger.debug("PvmActivity => {}, type => {}", ac.getId(), activityType);
+                }
+
+                if ("userTask".equals(ac.getProperty("type"))) {
+                    Map infoMap = new HashMap();
+                    infoMap.put("sid",ac.getId());
+                    infoMap.put("sidname",ac.getProperty("name"));
+                    list.add(infoMap);
+                }else{
+                    List<PvmTransition> acOutgoings = ac.getOutgoingTransitions();
+                    if (acOutgoings != null) {
+                        for (PvmTransition acOutgoing : acOutgoings) {
+                            Map infoMap = new HashMap();
+                            PvmActivity acset = acOutgoing.getDestination();
+                            infoMap.put("sid",acset.getId());
+                            if(ObjectUtils.isEmpty(acset.getProperty("name"))){
+                                infoMap.put("sidname","结束");
+                            }else{
+                                infoMap.put("sidname",acset.getProperty("name"));
+                            }
+
+                            list.add(infoMap);
+                        }
+                    }
+                }
+            }
+        }
+        return new Response().success("1","查询成功",list);
     }
 
     private Set<PvmActivity> nextGateway(Task task, Map<String, Object> map) {

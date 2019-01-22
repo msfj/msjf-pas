@@ -18,27 +18,34 @@ public class ProServiceImpl implements ProService {
     ProServiceDao proServiceDao;
 
     @Override
-    public void queryProServiceList(Map<String, Object> mapParams, Response rs) {
+    public Response queryProServiceList(Map<String, Object> mapParams) {
+        Response response = new Response();
         try{
             List<Map> list = proServiceDao.queryProServiceList(mapParams);
-            System.out.println(list.toString());
+            response.success("1","查询成功",list);
         }catch (Exception e){
             e.printStackTrace();
+            response.fail("0","查询失败"+e.getMessage());
         }
+        return response;
     }
 
     @Override
-    public void updateProService(Map<String, Object> mapParams, Response rs) {
+    public Response updateProService(Map<String, Object> mapParams) {
+        Response response = new Response();
         if(StringUtil.isNull(mapParams.get("proDefKey"))){
-           return;
+           return response.fail("0","proDefKey不能为空");
         }
         if(StringUtil.isNull(mapParams.get("serviceFlag"))){
-            return;
+            return response.fail("0","serviceFlag不能为空");
         }
         try{
              proServiceDao.updateServicePro(mapParams);
+             response.success("1","设置成功",null);
         }catch (Exception e){
             e.printStackTrace();
+            response.fail("0","设置失败"+e.getMessage());
         }
+        return  response;
     }
 }

@@ -3,22 +3,22 @@ package com.msjf.finance.pas.facade.act.domain;
 import com.msjf.finance.msjf.core.domian.BaseDomain;
 
 public class PagDomain extends BaseDomain {
-    private String pageSize;
-    private String pageNumber;
+    private Integer pageSize;
+    private Integer pageNumber;
 
-    public String getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(String pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public String getPageNumber() {
+    public Integer getPageNumber() {
         return pageNumber;
     }
 
-    public void setPageNumber(String pageNumber) {
+    public void setPageNumber(Integer pageNumber) {
         this.pageNumber = pageNumber;
     }
 }

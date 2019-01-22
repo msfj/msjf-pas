@@ -1,5 +1,6 @@
 package com.msjf.finance.pas.bpm.service;
 
+import com.msjf.finance.msjf.core.response.Response;
 import com.msjf.finance.pas.bpm.entity.ProStepAuditEntity;
 
 import java.util.List;
@@ -11,9 +12,7 @@ public interface ProStepAuditService {
      * @param mapParams
      * @return
      */
-    void queryAuditorList(Map<String, Object> mapParams);
+    Response queryAuditorList(Map<String, Object> mapParams) throws RuntimeException;
 
-    void addAuditorList(Map<String, Object> mapParams);
-
-    void updateAuditorList(Map<String, Object> mapParams);
+    Response updateAuditorList(Map<String, Object> mapParams) throws RuntimeException;
 }

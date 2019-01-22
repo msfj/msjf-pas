@@ -5,8 +5,8 @@ import com.msjf.finance.msjf.core.domian.BaseDomain;
 public class ProDeployPageDomain extends BaseDomain {
     private String state;
     private String lastVersion;
-    private String pageSize;
-    private String pageNumber;
+    private Integer pageSize;
+    private Integer pageNumber;
     private String name;
 
     public String getState() {
@@ -25,19 +25,19 @@ public class ProDeployPageDomain extends BaseDomain {
         this.lastVersion = lastVersion;
     }
 
-    public String getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(String pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public String getPageNumber() {
+    public Integer getPageNumber() {
         return pageNumber;
     }
 
-    public void setPageNumber(String pageNumber) {
+    public void setPageNumber(Integer pageNumber) {
         this.pageNumber = pageNumber;
     }
 

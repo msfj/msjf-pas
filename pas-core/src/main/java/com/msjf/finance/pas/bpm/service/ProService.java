@@ -12,11 +12,10 @@ public interface ProService {
      * 查询业务绑定流程信息列表
      *
      * @param mapParams
-     * @param rs
      */
-    public void queryProServiceList(Map<String, Object> mapParams, Response rs);
+    public Response queryProServiceList(Map<String, Object> mapParams) throws RuntimeException;
 
 
 
-    public void updateProService(Map<String, Object> mapParams, Response rs);
+    public Response updateProService(Map<String, Object> mapParams)throws RuntimeException;
 }

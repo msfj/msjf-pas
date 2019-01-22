@@ -100,4 +100,7 @@ public interface KbpmTaskService {
      * @param rs
      */
     public void getNextGateway(Map<String, Object> mapParams, Response rs);
+
+
+    public Response getAllNextTask(Map<String, Object> mapParams);
 }
