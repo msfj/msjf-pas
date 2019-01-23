@@ -16,12 +16,12 @@
         <Console name="Console" target="SYSTEM_OUT">
             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout charset="UTF-8"
-                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{consumerIp}|%X{sysChannelCode}] [%c:%line] - %msg%n"/>
+                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{customerIp}|%X{providerIp}|%X{customerno}] [%c:%line] - %msg%n"/>
         </Console>
         <RollingFile name="ErrorRollingFile" fileName="${logFilePath}/${errorLogFile}.log"
                      filePattern="${logFilePath}/$${date:yyyy-MM}/${errorLogFile}-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout charset="UTF-8"
-                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{consumerIp}|%X{sysChannelCode}] [%c:%line] - %msg%n"/>
+                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{customerIp}|%X{providerIp}|%X{customerno}] [%c:%line] - %msg%n"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
@@ -31,7 +31,7 @@
         <RollingFile name="BizRollingFile" fileName="${logFilePath}/${bizLogFile}.log"
                      filePattern="${logFilePath}/$${date:yyyy-MM}/${bizLogFile}-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout charset="UTF-8"
-                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{consumerIp}|%X{sysChannelCode}] [%c:%line] - %msg%n"/>
+                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{customerIp}|%X{providerIp}|%X{customerno}] [%c:%line] - %msg%n"/>
             <Filters>
                 <ThresholdFilter level="${bizLogLevel}"/>
                 <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
@@ -44,7 +44,7 @@
         <RollingFile name="AllRollingFile" fileName="${logFilePath}/${allLogFile}.log"
                      filePattern="${logFilePath}/$${date:yyyy-MM}/${allLogFile}-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout charset="UTF-8"
-                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{consumerIp}|%X{sysChannelCode}] [%c:%line] - %msg%n"/>
+                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{customerIp}|%X{providerIp}|%X{customerno}] [%c:%line] - %msg%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
@@ -61,7 +61,7 @@
         <RollingFile name="IORollingFile" fileName="${logFilePath}/${ioLogFile}.log"
                      filePattern="${logFilePath}/$${date:yyyy-MM}/${ioLogFile}-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout charset="UTF-8"
-                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{consumerIp}|%X{sysChannelCode}] [%c:%line] - %msg%n"/>
+                           pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] [%X{requestNo}|%X{customerIp}|%X{providerIp}|%X{customerno}] [%c:%line] - %msg%n"/>
             <Filters>
                 <ThresholdFilter level="${bizLogLevel}"/>
                 <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
