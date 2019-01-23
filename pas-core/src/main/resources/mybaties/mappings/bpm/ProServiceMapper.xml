@@ -11,7 +11,7 @@
     <select id="queryProServiceList"  parameterType="java.util.HashMap" resultType="java.util.LinkedHashMap">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM msjfpas.pas_pro_service t
+        FROM pas_pro_service t
         <where>
             <if test=" serviceFlag != null  and serviceFlag !=''">
                 and t.service_flag = #{serviceFlag}
@@ -24,7 +24,7 @@
     <!-- 修改业务流程信息 -->
     <update id="updateServicePro" parameterType="java.util.HashMap">
         <![CDATA[
-				update  msjfpas.pas_pro_service  set pro_def_key = #{proDefKey} where service_flag = #{serviceFlag}
+				update  pas_pro_service  set pro_def_key = #{proDefKey} where service_flag = #{serviceFlag}
 	   	 	]]>
     </update>
 </mapper>

@@ -16,7 +16,7 @@
     <select id="queryAuditorList"  parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM msjfpas.pas_step_audit t
+        FROM pas_step_audit t
         <where>
             <if test=" proDefKey != null  and proDefKey !=''">
                 and t.pro_def_key = #{proDefKey}
@@ -33,7 +33,7 @@
 
     <insert id="addAuditorList" parameterType="java.util.HashMap">
         <![CDATA[
-			insert into msjfpas.pas_step_audit(pro_def_key,pro_def_name,stepid,step_name,auditor_id,auditor_name,auditor_type,area_no)
+			insert into pas_step_audit(pro_def_key,pro_def_name,stepid,step_name,auditor_id,auditor_name,auditor_type,area_no)
 				values
 		 ]]>
         <foreach item="item" index="index" collection="list"    separator="," >
@@ -53,7 +53,7 @@
     <!-- É¾³ýÉêÇëµ¥²ÎÊý -->
     <delete id="delAuditorList" parameterType="java.util.HashMap">
         <![CDATA[
-				delete from msjfpas.pas_step_audit  where pro_def_key = #{proDefKey} and stepid = #{stepId} and area_no = #{areaNo}
+				delete from pas_step_audit  where pro_def_key = #{proDefKey} and stepid = #{stepId} and area_no = #{areaNo}
 	   	 	]]>
     </delete>
 </mapper>
