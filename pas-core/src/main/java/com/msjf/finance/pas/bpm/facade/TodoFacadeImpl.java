@@ -25,10 +25,10 @@ public class TodoFacadeImpl implements TodoFacade {
         map.put("actName",todoDomain.getActName());
         map.put("proDefName",todoDomain.getProDefName());
         int pageSize = todoDomain.getPageSize();
-        int pageNumber = todoDomain.getPageNumber();
+        int pageNumber = todoDomain.getPageNum();
         int firstResult = pageSize * (pageNumber - 1);
         map.put("pageSize",pageSize);
-        map.put("pageNumber",todoDomain.getPageNumber());
+        map.put("pageNumber",todoDomain.getPageNum());
         map.put("currIndex",firstResult);
         return proTodoService.queryProTodoServiceList(map);
     }

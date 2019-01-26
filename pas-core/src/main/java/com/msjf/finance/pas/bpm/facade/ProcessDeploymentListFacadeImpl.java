@@ -22,7 +22,7 @@ public class ProcessDeploymentListFacadeImpl implements ProcessDeploymentListFac
         Map<String,Object> map =new HashMap<>();
         map.put("lastVersion",proDeployPageDomain.getLastVersion());
         map.put("name",proDeployPageDomain.getName());
-        map.put("pageNumber",proDeployPageDomain.getPageNumber());
+        map.put("pageNumber",proDeployPageDomain.getPageNum());
         map.put("pageSize",proDeployPageDomain.getPageSize());
         map.put("state",proDeployPageDomain.getState());
         return processDefinitionService.listProcessDefinitionByStateAndPage(map);

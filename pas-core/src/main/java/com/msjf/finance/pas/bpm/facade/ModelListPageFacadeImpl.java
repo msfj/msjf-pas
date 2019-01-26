@@ -21,7 +21,7 @@ public class ModelListPageFacadeImpl implements ModelListPageFacade {
     public Response ModelListPage(PagDomain pagDomain) {
         Map<String,Object> map =new HashMap<>();
         map.put("pageSize",pagDomain.getPageSize());
-        map.put("pageNumber",pagDomain.getPageNumber());
+        map.put("pageNumber",pagDomain.getPageNum());
         return modelService.modelListPage(map);
     }
 }

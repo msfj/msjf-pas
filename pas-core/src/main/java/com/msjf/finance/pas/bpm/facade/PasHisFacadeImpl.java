@@ -25,10 +25,10 @@ public class PasHisFacadeImpl implements PasHisFacade {
         map.put("auditorId",pasHisDomain.getAuditorId());
         map.put("proDefName",pasHisDomain.getProDefName());
         int pageSize = pasHisDomain.getPageSize();
-        int pageNumber = pasHisDomain.getPageNumber();
+        int pageNumber = pasHisDomain.getPageNum();
         int firstResult = pageSize * (pageNumber - 1);
         map.put("pageSize",pageSize);
-        map.put("pageNumber",pasHisDomain.getPageNumber());
+        map.put("pageNumber",pasHisDomain.getPageNum());
         map.put("currIndex",firstResult);
         return pasHisService.queryPasHisServiceList(map);
     }
