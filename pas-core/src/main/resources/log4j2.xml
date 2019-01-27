@@ -73,7 +73,7 @@
         </RollingFile>
     </appenders>
     <loggers>
-        <logger name="com.msjf.finance.cas.log.InputOutputLogger" level="${bizLogLevel}" additivity="false">
+        <logger name="com.msjf.finance.msjf.core.log" level="${bizLogLevel}" additivity="false">
             <appender-ref ref="IORollingFile"/>
         </logger>
         <logger name="com.msjf.finance.cas.log" level="${bizLogLevel}" additivity="false">
